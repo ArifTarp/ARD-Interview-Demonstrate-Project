@@ -25,13 +25,20 @@ namespace ARD.DataAccess.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("District")
+                    b.Property<string>("AddressDetail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Province")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProvinceId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("ProvinceId");
 
                     b.ToTable("Addresses");
                 });
@@ -46,12 +53,7 @@ namespace ARD.DataAccess.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProvinceId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProvinceId");
 
                     b.ToTable("Districts");
                 });
@@ -97,13 +99,21 @@ namespace ARD.DataAccess.Migrations
                     b.ToTable("Students");
                 });
 
-            modelBuilder.Entity("ARD.Entity.Concrete.District", b =>
+            modelBuilder.Entity("ARD.Entity.Concrete.Address", b =>
                 {
-                    b.HasOne("ARD.Entity.Concrete.Province", "Province")
-                        .WithMany("Districts")
-                        .HasForeignKey("ProvinceId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("ARD.Entity.Concrete.District", "District")
+                        .WithMany("Addresses")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("ARD.Entity.Concrete.Province", "Province")
+                        .WithMany("Addresses")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("District");
 
                     b.Navigation("Province");
                 });
@@ -124,9 +134,14 @@ namespace ARD.DataAccess.Migrations
                     b.Navigation("Students");
                 });
 
+            modelBuilder.Entity("ARD.Entity.Concrete.District", b =>
+                {
+                    b.Navigation("Addresses");
+                });
+
             modelBuilder.Entity("ARD.Entity.Concrete.Province", b =>
                 {
-                    b.Navigation("Districts");
+                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ARD.DataAccess.Migrations
 {
     [DbContext(typeof(ARDDataContext))]
-    [Migration("20210126122411_initial")]
+    [Migration("20210126143346_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,15 +27,52 @@ namespace ARD.DataAccess.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("District")
+                    b.Property<string>("AddressDetail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Province")
+                    b.Property<int>("DistrictId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProvinceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DistrictId");
+
+                    b.HasIndex("ProvinceId");
+
+                    b.ToTable("Addresses");
+                });
+
+            modelBuilder.Entity("ARD.Entity.Concrete.District", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Districts");
+                });
+
+            modelBuilder.Entity("ARD.Entity.Concrete.Province", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Provinces");
                 });
 
             modelBuilder.Entity("ARD.Entity.Concrete.Student", b =>
@@ -64,6 +101,25 @@ namespace ARD.DataAccess.Migrations
                     b.ToTable("Students");
                 });
 
+            modelBuilder.Entity("ARD.Entity.Concrete.Address", b =>
+                {
+                    b.HasOne("ARD.Entity.Concrete.District", "District")
+                        .WithMany("Addresses")
+                        .HasForeignKey("DistrictId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ARD.Entity.Concrete.Province", "Province")
+                        .WithMany("Addresses")
+                        .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("District");
+
+                    b.Navigation("Province");
+                });
+
             modelBuilder.Entity("ARD.Entity.Concrete.Student", b =>
                 {
                     b.HasOne("ARD.Entity.Concrete.Address", "Address")
@@ -78,6 +134,16 @@ namespace ARD.DataAccess.Migrations
             modelBuilder.Entity("ARD.Entity.Concrete.Address", b =>
                 {
                     b.Navigation("Students");
+                });
+
+            modelBuilder.Entity("ARD.Entity.Concrete.District", b =>
+                {
+                    b.Navigation("Addresses");
+                });
+
+            modelBuilder.Entity("ARD.Entity.Concrete.Province", b =>
+                {
+                    b.Navigation("Addresses");
                 });
 #pragma warning restore 612, 618
         }

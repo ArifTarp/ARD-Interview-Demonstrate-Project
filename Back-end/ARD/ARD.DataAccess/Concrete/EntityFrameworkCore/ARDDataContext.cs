@@ -18,7 +18,7 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new StudentMap());
-            modelBuilder.ApplyConfiguration(new DistrictMap());
+            modelBuilder.ApplyConfiguration(new AddressMap());
             base.OnModelCreating(modelBuilder);
         }
 

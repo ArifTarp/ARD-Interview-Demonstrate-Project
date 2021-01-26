@@ -9,12 +9,12 @@ namespace ARD.Entity.Concrete
     {
         public Province()
         {
-            Districts = new List<District>();
+            Addresses = new List<Address>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<District> Districts { get; set; }
+        public ICollection<Address> Addresses { get; set; }
     }
 }
