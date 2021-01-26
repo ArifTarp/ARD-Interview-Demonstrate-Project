@@ -1,4 +1,4 @@
-export class Student {
+export class Address {
     id?:number;
     provinceId:number;
     districtId:number;
