@@ -13,7 +13,7 @@ export class StudentService {
     constructor(private httpClient: HttpClient, private router: Router) { }
 
     public addStudent(student: Student): void {
-        this.httpClient.post<Student>(this.path + "students/add", student).subscribe(data => {
+        this.httpClient.post<Student>(this.path + "students", student).subscribe(data => {
             this.router.navigateByUrl('/studentDetail/' + String(data.id))
         });
     }
