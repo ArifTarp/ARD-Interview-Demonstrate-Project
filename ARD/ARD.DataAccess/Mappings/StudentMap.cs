@@ -12,7 +12,7 @@ namespace ARD.DataAccess.Mappings
         public void Configure(EntityTypeBuilder<Student> builder)
         {
             builder.ToTable("Students");
-            builder.HasKey(s => s.LastName);
+            builder.HasKey(s => s.Id);
 
             builder.HasOne(s => s.Address).WithMany(a => a.Students).HasForeignKey(s => s.AddressId);
         }
