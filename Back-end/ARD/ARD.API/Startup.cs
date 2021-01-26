@@ -42,12 +42,17 @@ namespace ARD.API
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
-
+            // data access layer
             services.AddSingleton<IStudentDal, EfStudentDal>();
             services.AddSingleton<IAddressDal, EfAddressDal>();
+            services.AddSingleton<IProvinceDal, EfProvinceDal>();
+            services.AddSingleton<IDistrictDal, EfDistrictDal>();
 
+            // business layer
             services.AddSingleton<IStudentService, StudentManager>();
             services.AddSingleton<IAddressService, AddressManager>();
+            services.AddSingleton<IProvinceService, ProvinceManager>();
+            services.AddSingleton<IDistrictService, DistrictManager>();
 
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo { Title = "ARD API", Version = "v1" }); });
         }
