@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARD.Entity", "ARD.Entity\AR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARD.DataAccess", "ARD.DataAccess\ARD.DataAccess.csproj", "{4E75C444-E4CC-46E1-BB32-44145F79A533}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARD.Business", "ARD.Business\ARD.Business.csproj", "{19D742BE-BBA1-497B-8E7B-35F24ABBCF8C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4E75C444-E4CC-46E1-BB32-44145F79A533}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E75C444-E4CC-46E1-BB32-44145F79A533}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E75C444-E4CC-46E1-BB32-44145F79A533}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D742BE-BBA1-497B-8E7B-35F24ABBCF8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D742BE-BBA1-497B-8E7B-35F24ABBCF8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D742BE-BBA1-497B-8E7B-35F24ABBCF8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D742BE-BBA1-497B-8E7B-35F24ABBCF8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
