@@ -8,7 +8,7 @@ import { Student } from '../models/student';
     providedIn: "root"
 })
 export class StudentService {
-    path = "https://localhost:44348/api/";
+    path = "https://localhost:44332/api/";
 
     constructor(private httpClient: HttpClient, private router: Router) { }
 
