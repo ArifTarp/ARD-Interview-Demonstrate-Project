@@ -1,4 +1,5 @@
-﻿using ARD.Entity.Concrete;
+﻿using ARD.DataAccess.Mappings;
+using ARD.Entity.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            modelBuilder.ApplyConfiguration(new StudentMap());
             base.OnModelCreating(modelBuilder);
         }
 
