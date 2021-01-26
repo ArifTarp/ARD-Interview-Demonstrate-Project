@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARD.Business", "ARD.Busines
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARD.Core", "ARD.Core\ARD.Core.csproj", "{237CCF1F-BDC0-4D7A-B5AD-6A21565EE4ED}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ARD.API", "ARD.API\ARD.API.csproj", "{C4444C6E-2608-484F-A2C5-531EB65F9692}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{237CCF1F-BDC0-4D7A-B5AD-6A21565EE4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{237CCF1F-BDC0-4D7A-B5AD-6A21565EE4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{237CCF1F-BDC0-4D7A-B5AD-6A21565EE4ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4444C6E-2608-484F-A2C5-531EB65F9692}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4444C6E-2608-484F-A2C5-531EB65F9692}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4444C6E-2608-484F-A2C5-531EB65F9692}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4444C6E-2608-484F-A2C5-531EB65F9692}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
