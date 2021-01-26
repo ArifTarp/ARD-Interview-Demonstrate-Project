@@ -15,6 +15,8 @@ namespace ARD.API.Mapper.AutoMapper
             CreateMap<StudentAddDto, Student>().ReverseMap();
             CreateMap<StudentUpdateDto, Student>().ReverseMap();
 
+            CreateMap<AddressAddDto, Address>().ReverseMap();
+            CreateMap<AddressUpdateDto, Address>().ReverseMap();
         }
     }
 }
