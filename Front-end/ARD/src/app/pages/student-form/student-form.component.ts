@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 import { Student } from './../../models/student';
 import { Address } from './../../models/address';
+import { StudentService } from 'src/app/services/student.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class StudentFormComponent implements OnInit {
   registerForm: FormGroup;
   address: Address;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private studentService: StudentService) { }
 
   ngOnInit(): void {
     this.createRegisterForm();
@@ -43,5 +44,8 @@ export class StudentFormComponent implements OnInit {
     
   }
 
-  register(){}
+  register(){
+    this.student = Object.assign({},this.registerForm.value)
+    this.studentService.addStudent(this.student);
+  }
 }

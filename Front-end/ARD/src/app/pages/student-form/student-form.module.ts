@@ -5,6 +5,8 @@ import { StudentFormRoutingModule } from './student-form-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentFormComponent } from './student-form.component';
 
+import { StudentService } from '../../services/student.service';
+
 @NgModule({
   declarations: [StudentFormComponent],
   imports: [
@@ -12,6 +14,7 @@ import { StudentFormComponent } from './student-form.component';
     StudentFormRoutingModule,
     FormsModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [StudentService]
 })
 export class StudentFormModule { }
