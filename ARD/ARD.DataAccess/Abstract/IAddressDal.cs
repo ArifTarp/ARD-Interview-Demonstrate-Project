@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ARD.DataAccess.Abstract
 {
-    public interface IAddress : IEntityRepository<Address>
+    public interface IAddressDal : IEntityRepository<Address>
     {
     }
 }
