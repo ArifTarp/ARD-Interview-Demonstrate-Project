@@ -10,6 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ARD.API.Controllers
 {
+    [Route("api/addresses")]
+    [Produces("application/json")]
+    [ApiController]
     public class AddressesController : Controller
     {
         

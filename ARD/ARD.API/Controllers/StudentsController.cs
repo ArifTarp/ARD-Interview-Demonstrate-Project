@@ -10,13 +10,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ARD.API.Controllers
 {
-    public class StudentController : Controller
+    [Route("api/students")]
+    [Produces("application/json")]
+    [ApiController]
+    public class StudentsController : Controller
     {
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
 
 
-        public StudentController(IStudentService studentService, IMapper mapper)
+        public StudentsController(IStudentService studentService, IMapper mapper)
         {
             _studentService = studentService;
             _mapper = mapper;
