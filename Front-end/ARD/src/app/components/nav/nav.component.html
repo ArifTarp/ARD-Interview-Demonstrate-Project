@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img class="navbar-brand"
+      src="./../../../assets/images/books.svg" height="50px"
+      width="50px">
+    <button class="navbar-toggler" type="button" (click)="toggleNavbar()" data-toggle="collapse" data-target="#navbarColor01"
+      aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngClass]="{ 'show': navbarOpen }" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="addStudent" routerLinkActive="active">Add Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="updateStudent" routerLinkActive="active">Update Student</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="addAddress" routerLinkActive="active">Add Address</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  routerLink="updateAddress" routerLinkActive="active">Update Address</a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
