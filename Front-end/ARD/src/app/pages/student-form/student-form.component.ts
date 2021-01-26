@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+
+import { Student } from './../../models/student';
+import { Address } from './../../models/address';
+
 
 @Component({
   selector: 'app-student-form',
@@ -7,9 +12,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentFormComponent implements OnInit {
 
-  constructor() { }
+  student: Student;
+  registerForm: FormGroup;
+  address: Address;
+
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
+    this.createRegisterForm();
   }
 
+  createRegisterForm() {
+    this.registerForm = new FormGroup({
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      schoolIdentity: new FormControl(''),
+      address: new FormControl('')
+    }
+    )
+  }
+
+  changeProvince(e) {
+    
+    /*this.fruits.setValue(e.target.value, {
+      onlySelf: true
+    })*/
+  }
+
+  changeDistrict(e) {
+    
+  }
+
+  register(){}
 }

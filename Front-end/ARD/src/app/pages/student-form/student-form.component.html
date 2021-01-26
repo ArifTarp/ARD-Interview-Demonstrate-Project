@@ -1,1 +1,41 @@
-<p>student-form works!</p>
+<div class="form-div">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <h3 class="text-center font-weight-bold">Add Student</h3>
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name"
+                autofocus>
+        </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label>School Identity</label>
+            <input type="text" id="schoolIdentity" formControlName="schoolIdentity" class="form-control"
+                placeholder="School Identity">
+        </div>
+        <div class="form-group">
+            <select class="form-select" (change)="changeProvince($event)">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select class="form-select" (change)="changeDistrict($event)">
+                <option selected>Open this select menu</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col text-center">
+                <input type="submit" class="btn btn-primary" value="Register">
+            </div>
+        </div>
+    </form>
+</div>
