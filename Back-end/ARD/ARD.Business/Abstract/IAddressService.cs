@@ -17,5 +17,7 @@ namespace ARD.Business.Abstract
         Task DeleteAddressAsync(int id);
 
         Task UpdateAddressAsync(Address address);
+
+        Task<Address> GetAddressByProvinceIdAndDistrictId(int provinceId, int districtId);
     }
 }

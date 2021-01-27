@@ -17,5 +17,8 @@ namespace ARD.Business.Abstract
         Task DeleteProvinceAsync(int id);
 
         Task UpdateProvinceAsync(Province province);
+
+        Task<ICollection<Province>> GetAllWithDistrictsAsync();
+        Task<Province> GetByNameAsync(string name);
     }
 }
