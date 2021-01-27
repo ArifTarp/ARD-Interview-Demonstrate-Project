@@ -26,4 +26,11 @@ export class StudentService {
     public getStudents(): Observable<Student[]> {
         return this.httpClient.get<Student[]>(this.path + "students/getAllWithAddresses/");
     }
+
+    public deleteStudent(studentId: number): void {
+        this.httpClient.delete(this.path + "students/delete/" + studentId).subscribe(data=>{
+          this.alertifyService.success("The student is deleted successful")
+          //this.router.navigateByUrl('/studentDetail/'+String(data.id))
+        });
+    }
 }
