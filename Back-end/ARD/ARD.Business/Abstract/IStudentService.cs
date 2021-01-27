@@ -20,5 +20,7 @@ namespace ARD.Business.Abstract
 
         Task<ICollection<Student>> GetStudentsWithAddressesAsync();
 
+        Task<Student> GetStudentWithAddressById(int studentId);
+
     }
 }

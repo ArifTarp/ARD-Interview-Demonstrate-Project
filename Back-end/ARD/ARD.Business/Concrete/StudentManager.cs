@@ -27,6 +27,11 @@ namespace ARD.Business.Concrete
             return await _studentDal.GetStudentsWithAddresses();
         }
 
+        public async Task<Student> GetStudentWithAddressById(int studentId)
+        {
+            return await _studentDal.GetStudentWithAddressById(s => s.Id == studentId);
+        }
+
         public async Task<Student> GetStudentByIdAsync(int id)
         {
             return await _studentDal.GetAsync(s => s.Id == id);
