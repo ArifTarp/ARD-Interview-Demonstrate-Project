@@ -32,6 +32,14 @@ namespace ARD.API.Controllers
             return Ok(provinces);
         }
 
+        [HttpGet("getAllWithDistricts")]
+        public async Task<IActionResult> GetAllWithDistricts()
+        {
+            var provinces = await _provinceService.GetAllWithDistrictsAsync();
+
+            return Ok(provinces);
+        }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

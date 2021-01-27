@@ -18,14 +18,18 @@ namespace ARD.API.Controllers
         
             private readonly IAddressService _addressService;
             private readonly IMapper _mapper;
-
-            public AddressesController(IAddressService addressService, IMapper mapper)
+            private readonly IProvinceService _provinceService;
+            private readonly IDistrictService _districtService;
+            
+            public AddressesController(IAddressService addressService, IMapper mapper, IProvinceService provinceService, IDistrictService districtService)
             {
-            _addressService = addressService;
+                _addressService = addressService;
                 _mapper = mapper;
+                _provinceService = provinceService;
+                _districtService = districtService;
             }
 
-            [HttpGet()]
+        [HttpGet()]
             public async Task<IActionResult> Get()
             {
                 var addresses = await _addressService.GetAllAsync();
@@ -57,10 +61,17 @@ namespace ARD.API.Controllers
                 if (addressAddDto == null)
                     return BadRequest();
 
-                var newAddress = _mapper.Map<Address>(addressAddDto);
+                var existingProvince = await _provinceService.GetByNameAsync(addressAddDto.Province);
+                var existingDistrict = await _districtService.GetByNameAsync(addressAddDto.District);
+
+                if (existingProvince == null || existingDistrict == null)
+                    return BadRequest();
+
+                var modelforMap = new AddressAddForMapDto { Province=existingProvince, District=existingDistrict, AddressAddDto=addressAddDto};
+                var newAddress = _mapper.Map<Address>(modelforMap);
                 await _addressService.AddAddressAsync(newAddress);
 
-                return Ok();
+                return Ok(addressAddDto);
             }
 
             [HttpPut("update")]
