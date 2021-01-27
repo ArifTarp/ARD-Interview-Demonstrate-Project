@@ -19,6 +19,7 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
         {
             modelBuilder.ApplyConfiguration(new StudentMap());
             modelBuilder.ApplyConfiguration(new AddressMap());
+            modelBuilder.ApplyConfiguration(new DistrictMap());
             base.OnModelCreating(modelBuilder);
         }
 
