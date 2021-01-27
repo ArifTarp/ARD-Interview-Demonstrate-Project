@@ -16,19 +16,15 @@
                 placeholder="School Identity">
         </div>
         <div class="form-group">
-            <select class="form-select" (change)="changeProvince($event)">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+            <select class="form-select" (change)="changeProvince($event)" formControlName="provinceId">
+                <option value="0">Open this select menu</option>
+                <option *ngFor="let prov of provinces" value="{{prov.id}}">{{ prov.name }}</option>
             </select>
         </div>
-        <div class="form-group">
-            <select class="form-select" (change)="changeDistrict($event)">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+        <div *ngIf="selectedProvince != null" class="form-group">
+            <select class="form-select" (change)="changeDistrict($event)" formControlName="districtId">
+                <option value="0">Open this select menu</option>
+                <option *ngFor="let dist of selectedProvince.districts" value="{{dist.id}}">{{ dist.name }}</option>
             </select>
         </div>
         <hr>
