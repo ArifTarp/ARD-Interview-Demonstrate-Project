@@ -15,7 +15,19 @@ namespace ARD.API.Mapper.AutoMapper
             CreateMap<StudentAddDto, Student>().ReverseMap();
             CreateMap<StudentUpdateDto, Student>().ReverseMap();
 
-            CreateMap<AddressAddDto, Address>().ReverseMap();
+            CreateMap<AddressAddForMapDto, Address>()
+            .ForMember(dest => dest.ProvinceId, opt =>
+            {
+                opt.MapFrom(src => src.Province.Id);
+            })
+            .ForMember(dest => dest.DistrictId, opt =>
+            {
+                opt.MapFrom(src => src.District.Id);
+            })
+            .ForMember(dest => dest.AddressDetail, opt =>
+            {
+                opt.MapFrom(src => src.AddressAddDto.AddressDetail);
+            });
             CreateMap<AddressUpdateDto, Address>().ReverseMap();
 
             CreateMap<ProvinceAddDto, Province>().ReverseMap();
