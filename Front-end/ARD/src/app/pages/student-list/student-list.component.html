@@ -16,7 +16,7 @@
         <td>{{ std.lastName }}</td>
         <td>{{ std.schoolIdentity }}</td>
         <td>{{ std.address.province.name}} / {{std.address.district.name}}</td>
-        <td><button type="button" class="btn btn-danger"><i class="fa fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" (click)="edit(std.id)"><i class="fa fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" (click)="delete(std.id)"><i class="fa fa-trash"></i></button></td>
       </tr>
     </tbody>
