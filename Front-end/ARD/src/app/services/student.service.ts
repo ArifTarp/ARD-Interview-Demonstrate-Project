@@ -29,8 +29,8 @@ export class StudentService {
 
     public deleteStudent(studentId: number): void {
         this.httpClient.delete(this.path + "students/delete/" + studentId).subscribe(data=>{
-          this.alertifyService.success("The student is deleted successful")
-          //this.router.navigateByUrl('/studentDetail/'+String(data.id))
+          this.alertifyService.success("The student is deleted successful");
+          window.location.reload();
         });
     }
 }
