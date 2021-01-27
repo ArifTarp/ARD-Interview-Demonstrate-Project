@@ -8,5 +8,7 @@ namespace ARD.API.DTOs
     public class DistrictAddDto
     {
         public string Name { get; set; }
+        public int provinceId { get; set; }
+
     }
 }
