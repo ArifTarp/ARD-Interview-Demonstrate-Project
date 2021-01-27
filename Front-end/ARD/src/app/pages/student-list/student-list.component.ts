@@ -21,14 +21,19 @@ export class StudentListComponent implements OnInit {
   getStudents(){
     this.studentService.getStudents().subscribe(data => {
       this.students = data;
-      console.log(data);
     });
   }
 
   edit(studentId){
-    this.studentService.getStudentById(studentId).subscribe(data => {
-      this.router.navigate(['/addStudent',data]);
-    });
+    var student = this.students.find(s=>s.id==studentId);
+    this.router.navigate(['/addStudent',
+    {
+      firstName:student.firstName,
+      lastName:student.lastName,
+      schoolIdentity:student.schoolIdentity,
+      provinceId:student.address.province.id,
+      districtId:student.address.district.id
+    }]);
   }
 
   delete(studentId){
