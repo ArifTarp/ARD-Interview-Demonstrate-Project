@@ -11,9 +11,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Mark</td>
-        <td>Mark</td>
+      <tr *ngFor="let std of students">
+        <td>{{ std.firstName }}</td>
+        <td>{{ std.lastName }}</td>
+        <td>{{ std.schoolIdentity }}</td>
         <td>Otto</td>
         <td>Otto</td>
         <td><button type="button" class="btn btn-danger"><i class="fa fa-edit"></i>Red</button></td>
