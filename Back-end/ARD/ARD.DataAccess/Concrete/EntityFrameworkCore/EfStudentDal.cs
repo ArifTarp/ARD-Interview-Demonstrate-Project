@@ -23,7 +23,7 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
             }
         }
 
-        public async Task<Student> GetStudentWithAddress(Expression<Func<Student, bool>> filter = null)
+        public async Task<Student> GetStudentWithAddressById(Expression<Func<Student, bool>> filter = null)
         {
             using (var context = new ARDDataContext())
             {
