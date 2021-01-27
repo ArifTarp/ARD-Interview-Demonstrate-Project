@@ -1,6 +1,6 @@
 <div class="form-div">
-    <form [formGroup]="registerForm" (ngSubmit)="register()">
-        <h3 class="text-center font-weight-bold">Add Student</h3>
+    <form [formGroup]="registerForm"  *ngIf="registerForm" (ngSubmit)="register()">
+        <h3 class="text-center font-weight-bold">{{ header }}</h3>
         <div class="form-group">
             <label>First Name</label>
             <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name"
@@ -30,7 +30,7 @@
         <hr>
         <div class="row">
             <div class="col text-center">
-                <input type="submit" class="btn btn-primary" value="Register">
+                <input type="submit" class="btn btn-primary" value="{{ buttonText }}">
             </div>
         </div>
     </form>

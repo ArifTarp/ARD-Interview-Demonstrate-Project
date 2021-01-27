@@ -6,7 +6,6 @@ import { Province } from './../../models/province';
 
 import { StudentService } from 'src/app/services/student.service';
 import { AddressService } from 'src/app/services/address.service';
-import { District } from 'src/app/models/district';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -23,39 +22,55 @@ export class StudentFormComponent implements OnInit {
   provinces: Province[] = [];
 
   selectedProvince: Province;
-  initialFormModel;
+
+  header:string;
+  buttonText:string;
 
   constructor(private formBuilder: FormBuilder, private studentService: StudentService, private addressService: AddressService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.setInitialFormModel();
-    this.createRegisterForm();
-    this.getProvincesWithDistricts();
+    this.getProvincesWithDistricts(()=>this.setValuesByRoute());
   }
 
-  setInitialFormModel(){
-    this.initialFormModel = {
-      firstName: this.route.snapshot.paramMap.get('firstName'),
-      lastName: this.route.snapshot.paramMap.get('lastName'),
-      schoolIdentity: this.route.snapshot.paramMap.get('schoolIdentity'),
-      province: this.route.snapshot.paramMap.get('province'),
-      district: this.route.snapshot.paramMap.get('district'),
-    }
-  }
-
-  getProvincesWithDistricts() {
+  getProvincesWithDistricts(callback) {
     this.addressService.getProvincesWithDistricts().subscribe(data => {
       this.provinces = data;
+      callback();
     });
+  }
+
+  setValuesByRoute() {
+    this.createRegisterForm();
+    var firstName = this.route.snapshot.paramMap.get('firstName');
+    var lastName = this.route.snapshot.paramMap.get('lastName');
+    var schoolIdentity = this.route.snapshot.paramMap.get('schoolIdentity');
+    var provinceId = parseInt(this.route.snapshot.paramMap.get('provinceId'));
+    var districtId = parseInt(this.route.snapshot.paramMap.get('districtId'));
+
+    this.registerForm.get('firstName').setValue(firstName, { onlySelf: true })
+    this.registerForm.get('lastName').setValue(lastName, { onlySelf: true })
+    this.registerForm.get('schoolIdentity').setValue(schoolIdentity, { onlySelf: true })
+    this.registerForm.get('provinceId').setValue(provinceId, { onlySelf: true })
+    this.registerForm.get('districtId').setValue(districtId, { onlySelf: true })    
+
+    if (firstName && lastName && schoolIdentity && provinceId && districtId) {
+      this.selectedProvince = this.provinces.find(p => p.id == parseInt(this.route.snapshot.paramMap.get('provinceId')));
+      this.header = "Update Student";
+      this.buttonText = "Update";
+    }
+    else{
+      this.header = "Add Student";
+      this.buttonText = "Register";
+    }
   }
 
   createRegisterForm() {
     this.registerForm = new FormGroup({
-      firstName: new FormControl(this.initialFormModel['firstName']),
-      lastName: new FormControl(this.initialFormModel['lastName']),
-      schoolIdentity: new FormControl(this.initialFormModel['schoolIdentity']),
-      provinceId: new FormControl(this.initialFormModel['provinceId']),
-      districtId: new FormControl(this.initialFormModel['districtId'])
+      firstName: new FormControl(''),
+      lastName: new FormControl(''),
+      schoolIdentity: new FormControl(''),
+      provinceId: new FormControl(0),
+      districtId: new FormControl(0)
     })
   }
 
