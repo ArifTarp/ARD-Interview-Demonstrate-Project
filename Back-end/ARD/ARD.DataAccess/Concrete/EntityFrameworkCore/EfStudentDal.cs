@@ -23,5 +23,12 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
             }
         }
 
+        public async Task<Student> GetStudentWithAddress(Expression<Func<Student, bool>> filter = null)
+        {
+            using (var context = new ARDDataContext())
+            {
+                return await context.Set<Student>().Include(s => s.Address).Include(a => a.Address.District).Include(a => a.Address.Province).Where(filter).SingleOrDefaultAsync();
+            }
+        }
     }
 }
