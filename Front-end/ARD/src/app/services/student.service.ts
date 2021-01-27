@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 
 import { NewStudent } from "../models/newStudent";
 import { AlertifyService } from "./alertify.service";
+import { Observable } from "rxjs";
+
+import { Student } from "../models/student";
 
 @Injectable({
     providedIn: "root"
@@ -18,5 +21,9 @@ export class StudentService {
             //this.router.navigateByUrl('/studentDetail/' + String(data.id))
             this.alertifyService.success("Registrary of the student named " + data.firstName + data.lastName + " is successful");
         });
+    }
+
+    public getStudents(): Observable<Student[]> {
+        return this.httpClient.get<Student[]>(this.path + "students/");
     }
 }
