@@ -5,5 +5,5 @@ export class Student {
     firstName:string;
     lastName:string;
     schoolIdentity:string;
-    addresses:Address;
+    address:Address;
 }

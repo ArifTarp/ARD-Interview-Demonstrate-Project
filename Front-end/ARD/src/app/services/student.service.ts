@@ -24,6 +24,6 @@ export class StudentService {
     }
 
     public getStudents(): Observable<Student[]> {
-        return this.httpClient.get<Student[]>(this.path + "students/");
+        return this.httpClient.get<Student[]>(this.path + "students/getAllWithAddresses/");
     }
 }
