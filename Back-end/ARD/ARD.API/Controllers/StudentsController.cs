@@ -75,7 +75,7 @@ namespace ARD.API.Controllers
             newStudent.AddressId = existingAddress.Id;
             await _studentService.AddStudentAsync(newStudent);
 
-            return Ok();
+            return Ok(studentAddDto);
         }
 
         [HttpPut("update")]
