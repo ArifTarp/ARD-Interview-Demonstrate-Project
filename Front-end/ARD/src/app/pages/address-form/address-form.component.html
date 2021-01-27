@@ -1,0 +1,25 @@
+<div class="form-div">
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+        <h3 class="text-center font-weight-bold">Add Address</h3>
+        <div class="form-group">
+            <label>Province</label>
+            <input type="text" id="province" formControlName="province" class="form-control" placeholder="Province"
+                autofocus>
+        </div>
+        <div class="form-group">
+            <label>District</label>
+            <input type="text" id="district" formControlName="district" class="form-control" placeholder="District">
+        </div>
+        <div class="form-group">
+            <label>Address Detail</label>
+            <input type="text" id="addressDetail" formControlName="addressDetail" class="form-control"
+                placeholder="Address Detail">
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col text-center">
+                <input type="submit" class="btn btn-primary" value="Register">
+            </div>
+        </div>
+    </form>
+</div>
