@@ -33,4 +33,8 @@ export class StudentService {
           window.location.reload();
         });
     }
+
+    public getStudentById(studentId: number): Observable<Student> {
+        return this.httpClient.get<Student>(this.path + "students/" + studentId);
+    }
 }
