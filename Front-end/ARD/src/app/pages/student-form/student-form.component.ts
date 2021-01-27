@@ -7,6 +7,7 @@ import { Province } from './../../models/province';
 import { StudentService } from 'src/app/services/student.service';
 import { AddressService } from 'src/app/services/address.service';
 import { District } from 'src/app/models/district';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -22,12 +23,24 @@ export class StudentFormComponent implements OnInit {
   provinces: Province[] = [];
 
   selectedProvince: Province;
+  initialFormModel;
 
-  constructor(private formBuilder: FormBuilder, private studentService: StudentService, private addressService: AddressService) { }
+  constructor(private formBuilder: FormBuilder, private studentService: StudentService, private addressService: AddressService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.setInitialFormModel();
     this.createRegisterForm();
     this.getProvincesWithDistricts();
+  }
+
+  setInitialFormModel(){
+    this.initialFormModel = {
+      firstName: this.route.snapshot.paramMap.get('firstName'),
+      lastName: this.route.snapshot.paramMap.get('lastName'),
+      schoolIdentity: this.route.snapshot.paramMap.get('schoolIdentity'),
+      province: this.route.snapshot.paramMap.get('province'),
+      district: this.route.snapshot.paramMap.get('district'),
+    }
   }
 
   getProvincesWithDistricts() {
@@ -38,11 +51,11 @@ export class StudentFormComponent implements OnInit {
 
   createRegisterForm() {
     this.registerForm = new FormGroup({
-      firstName: new FormControl(''),
-      lastName: new FormControl(''),
-      schoolIdentity: new FormControl(''),
-      provinceId: new FormControl(0),
-      districtId: new FormControl(0)
+      firstName: new FormControl(this.initialFormModel['firstName']),
+      lastName: new FormControl(this.initialFormModel['lastName']),
+      schoolIdentity: new FormControl(this.initialFormModel['schoolIdentity']),
+      provinceId: new FormControl(this.initialFormModel['provinceId']),
+      districtId: new FormControl(this.initialFormModel['districtId'])
     })
   }
 
