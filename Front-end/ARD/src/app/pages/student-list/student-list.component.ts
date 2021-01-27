@@ -24,4 +24,12 @@ export class StudentListComponent implements OnInit {
     });
   }
 
+  edit(studentId){
+
+  }
+
+  delete(studentId){
+    this.studentService.deleteStudent(studentId);
+  }
+
 }
