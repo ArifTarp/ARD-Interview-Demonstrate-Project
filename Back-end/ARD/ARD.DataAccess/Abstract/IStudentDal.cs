@@ -11,6 +11,6 @@ namespace ARD.DataAccess.Abstract
     public interface IStudentDal : IEntityRepository<Student>
     {
         Task<List<Student>> GetStudentsWithAddresses(Expression<Func<Student, bool>> filter = null);
-        Task<Student> GetStudentWithAddressById(Expression<Func<Student, bool>> filter = null);
+        Task<Student> GetStudentWithAddressByIdAsync(Expression<Func<Student, bool>> filter = null);
     }
 }
