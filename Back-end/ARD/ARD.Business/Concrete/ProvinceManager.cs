@@ -22,6 +22,17 @@ namespace ARD.Business.Concrete
             return await _provinceDal.GetListAsync();
         }
 
+        public async Task<ICollection<Province>> GetAllWithDistrictsAsync()
+        {
+            return await _provinceDal.GetListWithDistrictsAsync();
+        }
+
+        public async Task<Province> GetByNameAsync(string name)
+        {
+            return await _provinceDal.GetAsync(p => p.Name == name);
+        }
+
+
         public async Task<Province> GetProvinceByIdAsync(int id)
         {
             return await _provinceDal.GetAsync(s => s.Id == id);

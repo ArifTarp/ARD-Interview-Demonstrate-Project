@@ -24,7 +24,12 @@ namespace ARD.Business.Concrete
 
         public async Task<District> GetDistrictByIdAsync(int id)
         {
-            return await _districtDal.GetAsync(s => s.Id == id);
+            return await _districtDal.GetAsync(d => d.Id == id);
+        }
+
+        public async Task<District> GetByNameAsync(string name)
+        {
+            return await _districtDal.GetAsync(d => d.Name == name);
         }
 
         public async Task AddDistrictAsync(District district)
