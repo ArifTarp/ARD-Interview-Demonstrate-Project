@@ -10,11 +10,14 @@ namespace ARD.Entity.Concrete
         public Province()
         {
             Addresses = new List<Address>();
+            Districts = new List<District>();
         }
 
         public int Id { get; set; }
         public string Name { get; set; }
 
         public ICollection<Address> Addresses { get; set; }
+        public ICollection<District> Districts { get; set; }
+
     }
 }
