@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StudentFormComponent } from './student-form.component';
 
 import { StudentService } from '../../services/student.service';
+import { AddressService } from '../../services/address.service';
+
 
 @NgModule({
   declarations: [StudentFormComponent],
@@ -15,6 +17,6 @@ import { StudentService } from '../../services/student.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [StudentService]
+  providers: [StudentService, AddressService]
 })
 export class StudentFormModule { }
