@@ -34,7 +34,6 @@ export class StudentFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProvincesWithDistricts(()=>this.setValuesByRoute());
-    this.setStaticsValue();
   }
 
   getProvincesWithDistricts(callback) {
@@ -61,6 +60,7 @@ export class StudentFormComponent implements OnInit {
       
       this.selectedProvince = this.provinces.find(p => p.id == parseInt(this.route.snapshot.paramMap.get('provinceId')));
       this.isUpdate = true;
+      this.setStaticsValue();
     }
     else{
       this.isUpdate = false;
