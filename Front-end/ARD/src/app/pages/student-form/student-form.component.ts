@@ -25,11 +25,13 @@ export class StudentFormComponent implements OnInit {
 
   header:string;
   buttonText:string;
+  isUpdate: boolean;
 
   constructor(private formBuilder: FormBuilder, private studentService: StudentService, private addressService: AddressService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProvincesWithDistricts(()=>this.setValuesByRoute());
+    this.setStaticsValue();
   }
 
   getProvincesWithDistricts(callback) {
@@ -55,12 +57,10 @@ export class StudentFormComponent implements OnInit {
 
     if (firstName && lastName && schoolIdentity && provinceId && districtId) {
       this.selectedProvince = this.provinces.find(p => p.id == parseInt(this.route.snapshot.paramMap.get('provinceId')));
-      this.header = "Update Student";
-      this.buttonText = "Update";
+      this.isUpdate = true;
     }
     else{
-      this.header = "Add Student";
-      this.buttonText = "Register";
+      this.isUpdate = false;
     }
   }
 
@@ -72,6 +72,17 @@ export class StudentFormComponent implements OnInit {
       provinceId: new FormControl(0),
       districtId: new FormControl(0)
     })
+  }
+
+  setStaticsValue(){
+    if (this.isUpdate) {
+      this.header = "Update Student";
+      this.buttonText = "Update";
+    }
+    else {
+      this.header = "Add Student";
+      this.buttonText = "Register";
+    }
   }
 
   changeProvince(e) {
@@ -92,6 +103,11 @@ export class StudentFormComponent implements OnInit {
       districtId:parseInt(this.registerForm.value.districtId),
     }
     
-    this.studentService.addStudent(this.newStudent);
+    if (this.isUpdate) {
+      this.studentService.updateStudent(this.newStudent);
+    }
+    else{
+      this.studentService.addStudent(this.newStudent);
+    }
   }
 }
