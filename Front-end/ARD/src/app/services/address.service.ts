@@ -28,7 +28,7 @@ export class AddressService {
         });
     }
 
-    public getAddresses(): Observable<Address[]> {
+    public getAddressesWithProvinceAndDistrictAndStudents(): Observable<Address[]> {
         return this.httpClient.get<Address[]>(this.path + "addresses/getAllWithProvinceAndDistrictAndStudents");
     }
 }
