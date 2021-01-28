@@ -33,9 +33,9 @@ namespace ARD.Business.Concrete
             return await _addressDal.GetAsync(a => a.Id == id);
         }
 
-        public async Task AddAddressAsync(Address address)
+        public async Task<Address> AddAddressAsync(Address address)
         {
-            await _addressDal.AddAsync(address);
+            return await _addressDal.AddAsync(address);
         }
 
         public async Task DeleteAddressAsync(int id)

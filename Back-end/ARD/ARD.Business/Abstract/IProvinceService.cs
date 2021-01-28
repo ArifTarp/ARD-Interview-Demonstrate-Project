@@ -20,5 +20,6 @@ namespace ARD.Business.Abstract
 
         Task<ICollection<Province>> GetAllWithDistrictsAsync();
         Task<Province> GetByNameAsync(string name);
+        Task<Province> GetByProvinceIdAndDistrictId(int provinceId, int districtId);
     }
 }

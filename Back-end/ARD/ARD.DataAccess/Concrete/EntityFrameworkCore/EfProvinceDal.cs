@@ -22,5 +22,13 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
                 return await context.Set<Province>().Include(p => p.Districts).Where(filter).ToListAsync();
             }
         }
+
+        public async Task<Province> GetWithDistrictsAsync(Expression<Func<Province, bool>> filter)
+        {
+            using (var context = new ARDDataContext())
+            {
+                return await context.Set<Province>().Include(p => p.Districts).Where(filter).SingleOrDefaultAsync();
+            }
+        }
     }
 }

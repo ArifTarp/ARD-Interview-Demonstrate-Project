@@ -27,6 +27,11 @@
                 <option *ngFor="let dist of selectedProvince.districts" value="{{dist.id}}">{{ dist.name }}</option>
             </select>
         </div>
+        <div *ngIf="selectedDistrict != null" class="form-group">
+            <label>Address Detail</label>
+            <input type="text" id="addressDetail" formControlName="addressDetail" class="form-control"
+                placeholder="Address Detail">
+        </div>
         <hr>
         <div class="row">
             <div class="col text-center">

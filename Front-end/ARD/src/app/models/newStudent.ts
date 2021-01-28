@@ -5,4 +5,5 @@ export class NewStudent {
     schoolIdentity:string;
     provinceId:number;
     districtId:number;
+    addressDetail?:string;
 }

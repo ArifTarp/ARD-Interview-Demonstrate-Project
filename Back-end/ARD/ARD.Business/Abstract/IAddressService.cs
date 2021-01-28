@@ -12,15 +12,15 @@ namespace ARD.Business.Abstract
 
         Task<Address> GetAddressByIdAsync(int id);
 
-        Task AddAddressAsync(Address address);
+        Task<Address> AddAddressAsync(Address address);
 
         Task DeleteAddressAsync(int id);
 
         Task UpdateAddressAsync(Address address);
 
-        Task<Address> GetAddressByProvinceIdAndDistrictId(int provinceId, int districtId);
-
         Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudents();
+
+        Task<Address> GetAddressByProvinceIdAndDistrictId(int provinceId, int districtId);
 
     }
 }

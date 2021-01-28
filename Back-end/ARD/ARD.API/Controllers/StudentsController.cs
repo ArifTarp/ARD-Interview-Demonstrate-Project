@@ -18,12 +18,14 @@ namespace ARD.API.Controllers
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
         private readonly IAddressService _addressService;
+        private readonly IProvinceService _provinceService;
 
-        public StudentsController(IStudentService studentService, IMapper mapper, IAddressService addressService)
+        public StudentsController(IStudentService studentService, IMapper mapper, IAddressService addressService, IProvinceService provinceService)
         {
             _studentService = studentService;
             _mapper = mapper;
             _addressService = addressService;
+            _provinceService = provinceService;
         }
 
         [HttpGet()]
@@ -74,13 +76,14 @@ namespace ARD.API.Controllers
             if (studentAddDto == null)
                 return BadRequest();
 
-            var existingAddress = await _addressService.GetAddressByProvinceIdAndDistrictId(studentAddDto.ProvinceId, studentAddDto.DistrictId);
+            var existingProvinceWithDistrict = await _provinceService.GetByProvinceIdAndDistrictId(studentAddDto.ProvinceId, studentAddDto.DistrictId);
 
-            if (existingAddress == null)
+            if (existingProvinceWithDistrict == null)
                 return BadRequest();
 
+            var newAddress = await _addressService.AddAddressAsync(new Address { ProvinceId=studentAddDto.ProvinceId, DistrictId=studentAddDto.DistrictId,AddressDetail=studentAddDto.AddressDetail});
             var newStudent = _mapper.Map<Student>(studentAddDto);
-            newStudent.AddressId = existingAddress.Id;
+            newStudent.AddressId = newAddress.Id;
             await _studentService.AddStudentAsync(newStudent);
 
             return Ok(studentAddDto);

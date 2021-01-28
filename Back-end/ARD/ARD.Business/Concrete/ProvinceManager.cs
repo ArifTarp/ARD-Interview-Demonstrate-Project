@@ -52,5 +52,10 @@ namespace ARD.Business.Concrete
         {
             await _provinceDal.UpdateAsync(province);
         }
+
+        public async Task<Province> GetByProvinceIdAndDistrictId(int provinceId, int districtId)
+        {
+            return await _provinceDal.GetWithDistrictsAsync(p=>p.Id==provinceId && p.Districts.Contains(new District { Id = districtId }));
+        }
     }
 }

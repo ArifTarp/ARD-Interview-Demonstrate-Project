@@ -11,5 +11,7 @@ namespace ARD.DataAccess.Abstract
     public interface IProvinceDal : IEntityRepository<Province>
     {
         Task<List<Province>> GetListWithDistrictsAsync(Expression<Func<Province, bool>> filter = null);
+        Task<Province> GetWithDistrictsAsync(Expression<Func<Province, bool>> filter);
+
     }
 }

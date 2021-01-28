@@ -7,6 +7,7 @@ import { Province } from './../../models/province';
 import { StudentService } from 'src/app/services/student.service';
 import { AddressService } from 'src/app/services/address.service';
 import { ActivatedRoute } from '@angular/router';
+import { District } from 'src/app/models/district';
 
 
 @Component({
@@ -22,6 +23,8 @@ export class StudentFormComponent implements OnInit {
   provinces: Province[] = [];
 
   selectedProvince: Province;
+  selectedDistrict: District;
+
 
   header:string;
   buttonText:string;
@@ -70,7 +73,8 @@ export class StudentFormComponent implements OnInit {
       lastName: new FormControl(''),
       schoolIdentity: new FormControl(''),
       provinceId: new FormControl(0),
-      districtId: new FormControl(0)
+      districtId: new FormControl(0),
+      addressDetail: new FormControl(''),
     })
   }
 
@@ -91,6 +95,13 @@ export class StudentFormComponent implements OnInit {
   }
 
   changeDistrict(e) {
+    for (let index = 0; index < this.provinces.length; index++) {
+        var district = this.provinces[index].districts.find(d => d.id == e.target.value)
+        if (district) {
+          this.selectedDistrict = district;
+          break; 
+        }
+    }
     this.registerForm.get('districtId').setValue(parseInt(e.target.value), { onlySelf: true })
   }
 
@@ -101,6 +112,7 @@ export class StudentFormComponent implements OnInit {
       schoolIdentity:this.registerForm.value.schoolIdentity,
       provinceId:parseInt(this.registerForm.value.provinceId),
       districtId:parseInt(this.registerForm.value.districtId),
+      addressDetail:this.registerForm.value.addressDetail
     }
     
     if (this.isUpdate) {
