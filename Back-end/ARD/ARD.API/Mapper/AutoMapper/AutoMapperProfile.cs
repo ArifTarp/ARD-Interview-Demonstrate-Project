@@ -28,7 +28,24 @@ namespace ARD.API.Mapper.AutoMapper
             {
                 opt.MapFrom(src => src.AddressAddDto.AddressDetail);
             });
-            CreateMap<AddressUpdateDto, Address>().ReverseMap();
+
+            CreateMap<AddressUpdateForMapDto, Address>()
+            .ForMember(dest => dest.Id, opt =>
+            {
+                opt.MapFrom(src => src.AddressUpdateDto.Id);
+            })
+            .ForMember(dest => dest.ProvinceId, opt =>
+            {
+                opt.MapFrom(src => src.Province.Id);
+            })
+            .ForMember(dest => dest.DistrictId, opt =>
+            {
+                opt.MapFrom(src => src.District.Id);
+            })
+            .ForMember(dest => dest.AddressDetail, opt =>
+            {
+                opt.MapFrom(src => src.AddressUpdateDto.AddressDetail);
+            });
 
             CreateMap<ProvinceAddDto, Province>().ReverseMap();
             CreateMap<ProvinceUpdateDto, Province>().ReverseMap();
