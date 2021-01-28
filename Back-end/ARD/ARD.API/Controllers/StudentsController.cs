@@ -92,9 +92,15 @@ namespace ARD.API.Controllers
             if (studentUpdateDto == null)
                 return BadRequest();
 
+            var existingAddress = await _addressService.GetAddressByProvinceIdAndDistrictId(studentUpdateDto.ProvinceId, studentUpdateDto.DistrictId);
+
+            if (existingAddress == null)
+                return BadRequest();
+
             var newStudent = _mapper.Map<Student>(studentUpdateDto);
+            newStudent.AddressId = existingAddress.Id;
             await _studentService.UpdateStudentAsync(newStudent);
-            return Ok();
+            return Ok(studentUpdateDto);
         }
     }
 }
