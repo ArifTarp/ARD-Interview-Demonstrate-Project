@@ -68,11 +68,11 @@ export class AddressFormComponent implements OnInit {
     this.newAddress = Object.assign({}, this.registerForm.value);
 
     if (this.isUpdate) {
+      this.newAddress.id = parseInt(this.route.snapshot.paramMap.get("id"));
       this.addressService.updateAddress(this.newAddress);
     }
     else {
       this.addressService.addAddress(this.newAddress);
     }
-    console.log(this.newAddress);
   }
 }
