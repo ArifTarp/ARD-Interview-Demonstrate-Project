@@ -38,4 +38,11 @@ export class AddressService {
           window.location.reload();
         });
     }
+
+    public updateAddress(newAddress: NewAddress): void {
+        this.httpClient.put<NewAddress>(this.path + "addresses/update", newAddress).subscribe(data => {
+            //this.router.navigateByUrl('/studentDetail/' + String(data.id))
+            this.alertifyService.success("Update of the address named " + data.province + "/" + data.district + " is successful");
+        });
+    }
 }
