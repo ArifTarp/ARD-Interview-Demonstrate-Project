@@ -26,7 +26,7 @@ export class StudentListComponent implements OnInit {
 
   edit(studentId){
     var student = this.students.find(s=>s.id==studentId);
-    this.router.navigate(['/addStudent',
+    this.router.navigate(['/formStudent',
     {
       firstName:student.firstName,
       lastName:student.lastName,
