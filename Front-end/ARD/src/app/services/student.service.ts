@@ -37,4 +37,11 @@ export class StudentService {
     public getStudentById(studentId: number): Observable<Student> {
         return this.httpClient.get<Student>(this.path + "students/" + studentId);
     }
+
+    public updateStudent(newStudent: NewStudent): void {
+        this.httpClient.put<NewStudent>(this.path + "students/update", newStudent).subscribe(data => {
+            //this.router.navigateByUrl('/studentDetail/' + String(data.id))
+            this.alertifyService.success("Update of the student named " + data.firstName + data.lastName + " is successful");
+        });
+    }
 }
