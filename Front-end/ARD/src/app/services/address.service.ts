@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 
 import { NewAddress } from "../models/newAddress";
 import { AlertifyService } from "./alertify.service";
+import { Address } from "../models/Address";
 
 @Injectable({
     providedIn: "root"
@@ -25,5 +26,9 @@ export class AddressService {
             //this.router.navigateByUrl('/studentDetail/' + String(data.id))
             this.alertifyService.success("Registrary of the address named " + data.province + "/" + data.district + " is successful");
         });
+    }
+
+    public getAddresses(): Observable<Address[]> {
+        return this.httpClient.get<Address[]>(this.path + "addresses/getAllWithProvinceAndDistrictAndStudents");
     }
 }
