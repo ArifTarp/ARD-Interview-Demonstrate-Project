@@ -56,7 +56,7 @@ namespace ARD.API.Controllers
                 return Ok(address);
             }
 
-            [HttpDelete("delete")]
+            [HttpDelete("delete/{id}")]
             public async Task<IActionResult> Delete(int id)
             {
                 await _addressService.DeleteAddressAsync(id);
