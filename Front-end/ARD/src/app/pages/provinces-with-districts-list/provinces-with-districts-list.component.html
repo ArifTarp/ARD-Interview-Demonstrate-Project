@@ -1,15 +1,20 @@
 <table class="table">
-    <caption class="text-center">List of Address</caption>
+    <caption class="text-center">List of Provinces With Districts</caption>
     <thead>
       <tr>
-        <th scope="col">Province</th>
-        <th scope="col">District</th>
+        <th scope="col">Provinces</th>
+        <th scope="col">Districts</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let prov of provinces">
         <td>{{ prov.name }}</td>
-        
+        <td>
+          <span *ngFor="let dist of prov.districts; last as isLast">
+            {{ dist.name }}
+            <span *ngIf="isLast==false">,</span>
+          </span>
+        </td>
       </tr>
     </tbody>
   </table>

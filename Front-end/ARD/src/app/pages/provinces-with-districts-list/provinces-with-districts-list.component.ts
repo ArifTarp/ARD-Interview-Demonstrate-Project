@@ -13,6 +13,7 @@ export class ProvincesWithDistrictsListComponent implements OnInit {
   constructor(private provinceService:ProvinceService) { }
 
   ngOnInit(): void {
+    this.getProvinces();
   }
 
   getProvinces(){
