@@ -88,9 +88,17 @@ namespace ARD.API.Controllers
                 if (addressUpdateDto == null)
                     return BadRequest();
 
-                var newAddress = _mapper.Map<Address>(addressUpdateDto);
+                var existingProvince = await _provinceService.GetByNameAsync(addressUpdateDto.ProvinceName);
+                var existingDistrict = await _districtService.GetByNameAsync(addressUpdateDto.DistrictName);
+
+                if (existingProvince == null || existingDistrict == null)
+                    return BadRequest();
+
+                var modelforMap = new AddressUpdateForMapDto { Province=existingProvince, District=existingDistrict, AddressUpdateDto=addressUpdateDto };
+                var newAddress = _mapper.Map<Address>(modelforMap);
                 await _addressService.UpdateAddressAsync(newAddress);
-                return Ok();
+
+                return Ok(addressUpdateDto);
             }
         
     }
