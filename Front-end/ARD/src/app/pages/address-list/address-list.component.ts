@@ -24,7 +24,7 @@ export class AddressListComponent implements OnInit {
     });
   }
 
-  edit(addressId){
+  /*edit(addressId){
     var address = this.addresses.find(a=>a.id==addressId);
     this.router.navigate(['/formAddress',
     {
@@ -37,6 +37,6 @@ export class AddressListComponent implements OnInit {
 
   delete(addressId){
     this.addressService.deleteAddress(addressId);
-  }
+  }*/
 
 }

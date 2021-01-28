@@ -11,10 +11,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/student-list/student-list.module').then(m => m.StudentListModule),
   },
   {
-    path: 'formAddress',
-    loadChildren: () => import('./pages/address-form/address-form.module').then(m => m.AddressFormModule),
-  },
-  {
     path: 'listAddress',
     loadChildren: () => import('./pages/address-list/address-list.module').then(m => m.AddressListModule),
   },
