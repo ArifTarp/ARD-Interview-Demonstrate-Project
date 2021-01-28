@@ -18,7 +18,7 @@ const routes: Routes = [
     path: 'listAddress',
     loadChildren: () => import('./pages/address-list/address-list.module').then(m => m.AddressListModule),
   },
-  {path: '', redirectTo: '/addStudent', pathMatch: 'full'}
+  {path: '', redirectTo: '/formStudent', pathMatch: 'full'}
 ];
 
 @NgModule({
