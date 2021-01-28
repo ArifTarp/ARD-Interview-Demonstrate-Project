@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Address } from 'src/app/models/Address';
+import { AddressService } from 'src/app/services/address.service';
 
 @Component({
   selector: 'app-address-list',
@@ -7,9 +10,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressListComponent implements OnInit {
 
-  constructor() { }
+  addresses: Address[];
+
+  constructor(private addressService: AddressService, private router: Router) { }
 
   ngOnInit(): void {
+    this.getAddresses();
+  }
+
+  getAddresses(){
+    this.addressService.getAddressesWithProvinceAndDistrictAndStudents().subscribe(data => {
+      this.addresses = data;
+    });
+  }
+
+  edit(addressId){
+    var address = this.addresses.find(a=>a.id==addressId);
+    this.router.navigate(['/formAddress',
+    {
+      province:address.province,
+      district:address.district,
+      addressDetail:address.addressDetail
+    }]);
+  }
+
+  delete(addressId){
+    this.addressService.deleteAddress(addressId);
   }
 
 }

@@ -4,18 +4,20 @@
       <tr>
         <th scope="col">Province</th>
         <th scope="col">District</th>
-        <th scope="col">Detail</th>
+        <th scope="col">Address Detail</th>
+        <th scope="col">Students</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Mark</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td><button type="button" class="btn btn-danger"><i class="fa fa-edit"></i>Red</button></td>
-        <td><button type="button" class="btn btn-danger"><i class="fa fa-trash"></i>Red</button></td>
+      <tr *ngFor="let adr of addresses">
+        <td>{{ adr.province.name }}</td>
+        <td>{{ adr.district.name }}</td>
+        <td>{{ adr.addressDetail }}</td>
+        <td><span *ngIf="adr.students != null" *ngFor="let std of adr.students">{{ std.firstName}}, {{std.lastName}}</span></td>
+        <td><button type="button" class="btn btn-danger" (click)="edit(adr.id)"><i class="fa fa-edit"></i></button></td>
+        <td><button type="button" class="btn btn-danger" (click)="delete(adr.id)"><i class="fa fa-trash"></i></button></td>
       </tr>
     </tbody>
   </table>
