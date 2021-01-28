@@ -47,15 +47,15 @@ export class StudentFormComponent implements OnInit {
     var lastName = this.route.snapshot.paramMap.get('lastName');
     var schoolIdentity = this.route.snapshot.paramMap.get('schoolIdentity');
     var provinceId = parseInt(this.route.snapshot.paramMap.get('provinceId'));
-    var districtId = parseInt(this.route.snapshot.paramMap.get('districtId'));
-
-    this.registerForm.get('firstName').setValue(firstName, { onlySelf: true })
-    this.registerForm.get('lastName').setValue(lastName, { onlySelf: true })
-    this.registerForm.get('schoolIdentity').setValue(schoolIdentity, { onlySelf: true })
-    this.registerForm.get('provinceId').setValue(provinceId, { onlySelf: true })
-    this.registerForm.get('districtId').setValue(districtId, { onlySelf: true })    
+    var districtId = parseInt(this.route.snapshot.paramMap.get('districtId'));   
 
     if (firstName && lastName && schoolIdentity && provinceId && districtId) {
+      this.registerForm.get('firstName').setValue(firstName, { onlySelf: true })
+      this.registerForm.get('lastName').setValue(lastName, { onlySelf: true })
+      this.registerForm.get('schoolIdentity').setValue(schoolIdentity, { onlySelf: true })
+      this.registerForm.get('provinceId').setValue(provinceId, { onlySelf: true })
+      this.registerForm.get('districtId').setValue(districtId, { onlySelf: true }) 
+      
       this.selectedProvince = this.provinces.find(p => p.id == parseInt(this.route.snapshot.paramMap.get('provinceId')));
       this.isUpdate = true;
     }
@@ -104,6 +104,7 @@ export class StudentFormComponent implements OnInit {
     }
     
     if (this.isUpdate) {
+      this.newStudent.id = parseInt(this.route.snapshot.paramMap.get('id'));
       this.studentService.updateStudent(this.newStudent);
     }
     else{
