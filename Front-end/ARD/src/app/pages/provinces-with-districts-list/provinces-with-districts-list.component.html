@@ -1,0 +1,16 @@
+<table class="table">
+    <caption class="text-center">List of Address</caption>
+    <thead>
+      <tr>
+        <th scope="col">Province</th>
+        <th scope="col">District</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prov of provinces">
+        <td>{{ prov.name }}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+

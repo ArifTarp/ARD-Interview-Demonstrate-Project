@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'listAddress',
     loadChildren: () => import('./pages/address-list/address-list.module').then(m => m.AddressListModule),
   },
+  {
+    path: 'listProvincesWithDistricts',
+    loadChildren: () => import('./pages/provinces-with-districts-list/provinces-with-districts-list.module').then(m => m.ProvincesWithDistrictsListModule),
+  },
   {path: '', redirectTo: '/formStudent', pathMatch: 'full'}
 ];
 
