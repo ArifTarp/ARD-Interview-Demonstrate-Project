@@ -16,8 +16,6 @@ namespace ARD.DataAccess.Mappings
 
             builder.HasOne(a => a.Province).WithMany(p=>p.Addresses).HasForeignKey(a => a.ProvinceId).OnDelete(DeleteBehavior.Restrict);
             builder.HasOne(a => a.District).WithMany(d => d.Addresses).HasForeignKey(a => a.DistrictId).OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasIndex(a => new { a.ProvinceId, a.DistrictId }).IsUnique();
         }
     }
 }
