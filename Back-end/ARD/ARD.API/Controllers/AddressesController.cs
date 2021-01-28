@@ -37,6 +37,14 @@ namespace ARD.API.Controllers
                 return Ok(addresses);
             }
 
+            [HttpGet("getAllWithProvinceAndDistrictAndStudents")]
+            public async Task<IActionResult> GetAllWithProvinceAndDistrictAndStudents()
+            {
+                var addresses = await _addressService.GetAllWithProvinceAndDistrictAndStudents();
+
+                return Ok(addresses);
+            }
+
 
             [HttpGet("{id}")]
             public async Task<IActionResult> Get(int id)
