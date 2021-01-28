@@ -8,7 +8,7 @@
 * UI: Angular
 
 ## Entity Relationship Diagram
-> Provinces and Districts seed data  
+#### Provinces and Districts seed data  
 
 ![alt text](https://github.com/ArifTarp/Interview-Demonstrate-Project/blob/master/screen-shots/erd.JPG)
 
