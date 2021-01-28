@@ -4,8 +4,9 @@
       <tr>
         <th scope="col">First Name</th>
         <th scope="col">Last Name</th>
-        <th scope="col">SchoolIdentity</th>
+        <th scope="col">School Identity</th>
         <th scope="col">Address</th>
+        <th scope="col">Address Detail</th>
         <th scope="col">Edit</th>
         <th scope="col">Delete</th>
       </tr>
@@ -16,6 +17,7 @@
         <td>{{ std.lastName }}</td>
         <td>{{ std.schoolIdentity }}</td>
         <td>{{ std.address.province.name}} / {{std.address.district.name}}</td>
+        <td>{{ std.address.addressDetail }}</td>
         <td><button type="button" class="btn btn-danger" (click)="edit(std.id)"><i class="fa fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" (click)="delete(std.id)"><i class="fa fa-trash"></i></button></td>
       </tr>
