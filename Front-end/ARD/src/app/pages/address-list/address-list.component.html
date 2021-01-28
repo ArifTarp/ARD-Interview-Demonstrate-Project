@@ -15,7 +15,7 @@
         <td>{{ adr.province.name }}</td>
         <td>{{ adr.district.name }}</td>
         <td>{{ adr.addressDetail }}</td>
-        <td><span *ngIf="adr.students != null" *ngFor="let std of adr.students">{{ std.firstName}}, {{std.lastName}}</span></td>
+        <td><span *ngFor="let std of adr.students">{{ std.firstName}}, {{std.lastName}}</span></td>
         <td><button type="button" class="btn btn-danger" (click)="edit(adr.id)"><i class="fa fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" (click)="delete(adr.id)"><i class="fa fa-trash"></i></button></td>
       </tr>
