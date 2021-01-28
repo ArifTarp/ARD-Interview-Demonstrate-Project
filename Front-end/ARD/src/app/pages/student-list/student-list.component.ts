@@ -39,6 +39,10 @@ export class StudentListComponent implements OnInit {
 
   delete(studentId){
     this.studentService.deleteStudent(studentId);
+    this.refresh();
   }
 
+  refresh(){
+    this.router.navigateByUrl("listStudent");
+  }
 }
