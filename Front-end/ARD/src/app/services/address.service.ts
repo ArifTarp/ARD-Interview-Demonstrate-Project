@@ -31,4 +31,11 @@ export class AddressService {
     public getAddressesWithProvinceAndDistrictAndStudents(): Observable<Address[]> {
         return this.httpClient.get<Address[]>(this.path + "addresses/getAllWithProvinceAndDistrictAndStudents");
     }
+
+    public deleteAddress(addressId: number): void {
+        this.httpClient.delete(this.path + "addresses/delete/" + addressId).subscribe(data=>{
+          this.alertifyService.success("The address is deleted successful");
+          window.location.reload();
+        });
+    }
 }
