@@ -28,8 +28,8 @@ export class AddressListComponent implements OnInit {
     var address = this.addresses.find(a=>a.id==addressId);
     this.router.navigate(['/formAddress',
     {
-      province:address.province,
-      district:address.district,
+      provinceName:address.province.name,
+      districtName:address.district.name,
       addressDetail:address.addressDetail
     }]);
   }
