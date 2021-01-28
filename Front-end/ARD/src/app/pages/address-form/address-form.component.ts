@@ -24,19 +24,19 @@ export class AddressFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.setValuesByRoute();
+    this.setStaticsValue();
   }
 
   setValuesByRoute() {
     this.createRegisterForm();
     var provinceName = this.route.snapshot.paramMap.get('provinceName');
     var districtName = this.route.snapshot.paramMap.get('districtName');
-    var addressDetail = this.route.snapshot.paramMap.get('addressDetail');
+    var addressDetail = this.route.snapshot.paramMap.get('addressDetail');    
 
-    this.registerForm.get('province').setValue(provinceName, { onlySelf: true })
-    this.registerForm.get('district').setValue(districtName, { onlySelf: true })
-    this.registerForm.get('addressDetail').setValue(addressDetail, { onlySelf: true })    
-
-    if (provinceName && districtName && addressDetail) {
+    if (provinceName && districtName) {
+      this.registerForm.get('provinceName').setValue(provinceName, { onlySelf: true })
+      this.registerForm.get('districtName').setValue(districtName, { onlySelf: true })
+      this.registerForm.get('addressDetail').setValue(addressDetail, { onlySelf: true })
       this.isUpdate = true;
     }
     else{
