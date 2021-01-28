@@ -60,11 +60,11 @@ export class StudentFormComponent implements OnInit {
       
       this.selectedProvince = this.provinces.find(p => p.id == parseInt(this.route.snapshot.paramMap.get('provinceId')));
       this.isUpdate = true;
-      this.setStaticsValue();
     }
     else{
       this.isUpdate = false;
     }
+    this.setStaticsValue();
   }
 
   createRegisterForm() {
