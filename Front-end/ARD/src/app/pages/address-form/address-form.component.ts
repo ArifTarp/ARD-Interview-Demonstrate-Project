@@ -46,8 +46,8 @@ export class AddressFormComponent implements OnInit {
 
   createRegisterForm() {
     this.registerForm = new FormGroup({
-      province: new FormControl(''),
-      district: new FormControl(''),
+      provinceName: new FormControl(''),
+      districtName: new FormControl(''),
       addressDetail: new FormControl('')
     }
     )
