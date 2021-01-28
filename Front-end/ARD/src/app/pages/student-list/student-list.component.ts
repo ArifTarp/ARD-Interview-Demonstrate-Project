@@ -43,6 +43,6 @@ export class StudentListComponent implements OnInit {
   }
 
   refresh(){
-    this.router.navigateByUrl("listStudent");
+    this.router.navigateByUrl('/listStudent');
   }
 }
