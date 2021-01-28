@@ -22,6 +22,12 @@ namespace ARD.Business.Concrete
             return await _addressDal.GetListAsync();
         }
 
+        public async Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudents()
+        {
+            return await _addressDal.GetAllWithProvinceAndDistrictAndStudents();
+        }
+
+
         public async Task<Address> GetAddressByIdAsync(int id)
         {
             return await _addressDal.GetAsync(a => a.Id == id);
