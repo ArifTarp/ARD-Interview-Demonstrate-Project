@@ -18,6 +18,8 @@ export class AddressFormComponent implements OnInit {
   header:string;
   buttonText:string;
 
+  isUpdate: boolean;
+
   constructor(private addressService: AddressService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -35,12 +37,10 @@ export class AddressFormComponent implements OnInit {
     this.registerForm.get('addressDetail').setValue(addressDetail, { onlySelf: true })    
 
     if (provinceName && districtName && addressDetail) {
-      this.header = "Update Address";
-      this.buttonText = "Update";
+      this.isUpdate = true;
     }
     else{
-      this.header = "Add Address";
-      this.buttonText = "Register";
+      this.isUpdate = false;
     }
   }
 
@@ -53,9 +53,26 @@ export class AddressFormComponent implements OnInit {
     )
   }
 
+  setStaticsValue(){
+    if (this.isUpdate) {
+      this.header = "Update Address";
+      this.buttonText = "Update";
+    }
+    else {
+      this.header = "Add Address";
+      this.buttonText = "Register";
+    }
+  }
+
   register() {
     this.newAddress = Object.assign({}, this.registerForm.value);
-    this.addressService.addAddress(this.newAddress);
+
+    if (this.isUpdate) {
+      this.addressService.updateAddress(this.newAddress);
+    }
+    else {
+      this.addressService.addAddress(this.newAddress);
+    }
     console.log(this.newAddress);
   }
 }
