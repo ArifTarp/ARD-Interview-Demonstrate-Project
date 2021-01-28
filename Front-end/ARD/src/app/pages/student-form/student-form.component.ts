@@ -5,9 +5,9 @@ import { NewStudent } from './../../models/newStudent';
 import { Province } from './../../models/province';
 
 import { StudentService } from 'src/app/services/student.service';
-import { AddressService } from 'src/app/services/address.service';
 import { ActivatedRoute } from '@angular/router';
 import { District } from 'src/app/models/district';
+import { ProvinceService } from 'src/app/services/province.service';
 
 
 @Component({
@@ -30,14 +30,14 @@ export class StudentFormComponent implements OnInit {
   buttonText:string;
   isUpdate: boolean;
 
-  constructor(private formBuilder: FormBuilder, private studentService: StudentService, private addressService: AddressService, private route:ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private studentService: StudentService, private provinceService: ProvinceService, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getProvincesWithDistricts(()=>this.setValuesByRoute());
   }
 
   getProvincesWithDistricts(callback) {
-    this.addressService.getProvincesWithDistricts().subscribe(data => {
+    this.provinceService.getProvincesWithDistricts().subscribe(data => {
       this.provinces = data;
       callback();
     });
