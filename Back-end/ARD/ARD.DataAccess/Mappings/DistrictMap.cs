@@ -19,14 +19,14 @@ namespace ARD.DataAccess.Mappings
             builder.HasIndex(d => new { d.Name, d.provinceId }).IsUnique();
 
             builder.HasData(
-                new District { Name = "Yenimahalle", provinceId = 1},
-                new District { Name = "Çankaya", provinceId = 1 },
-                new District { Name = "Bahçeşehir", provinceId = 2 },
-                new District { Name = "Beyoğlu", provinceId = 2 },
-                new District { Name = "Osmangazi", provinceId = 3 },
-                new District { Name = "İnegöl", provinceId = 3 },
-                new District { Name = "Selçuk", provinceId = 4 },
-                new District { Name = "Seferihisar", provinceId = 4 }
+                new District { Id = 1, Name = "Yenimahalle", provinceId = 1},
+                new District { Id = 2, Name = "Çankaya", provinceId = 1 },
+                new District { Id = 3, Name = "Bahçeşehir", provinceId = 2 },
+                new District { Id = 4, Name = "Beyoğlu", provinceId = 2 },
+                new District { Id = 5, Name = "Osmangazi", provinceId = 3 },
+                new District { Id = 6, Name = "İnegöl", provinceId = 3 },
+                new District { Id = 7, Name = "Selçuk", provinceId = 4 },
+                new District { Id = 8, Name = "Seferihisar", provinceId = 4 }
             );
         }
     }

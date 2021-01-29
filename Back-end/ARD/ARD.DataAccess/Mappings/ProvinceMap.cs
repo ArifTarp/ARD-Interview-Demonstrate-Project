@@ -15,10 +15,10 @@ namespace ARD.DataAccess.Mappings
             builder.HasKey(p => p.Id);
 
             builder.HasData(
-                new Province { Name="Ankara" },
-                new Province { Name = "İstanbul" },
-                new Province { Name = "Bursa" },
-                new Province { Name = "İzmir" }
+                new Province { Id = 1, Name="Ankara" },
+                new Province { Id = 2, Name = "İstanbul" },
+                new Province { Id = 3, Name = "Bursa" },
+                new Province { Id = 4, Name = "İzmir" }
             );
         }
     }
