@@ -1,38 +1,59 @@
 <div class="form-div">
-    <form [formGroup]="registerForm"  *ngIf="registerForm" (ngSubmit)="register()">
+    <form [formGroup]="registerForm" *ngIf="registerForm" (ngSubmit)="register()">
         <h1 class="text-center font-weight-bold">{{ header }}</h1>
         <div class="form-group">
             <label>First Name</label>
-            <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name"
-                autofocus>
+            <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name">
+            <span class="error-span" *ngIf="(isSubmitted && registerForm.get('firstName').errors?.required) || 
+                (registerForm.get('firstName').errors?.required && registerForm.get('firstName').touched)">
+                First Name is Required...
+            </span>
         </div>
         <div class="form-group">
             <label>Last Name</label>
             <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Last Name">
+            <span class="error-span" *ngIf="(isSubmitted && registerForm.get('lastName').errors?.required) || 
+                (registerForm.get('lastName').errors?.required && registerForm.get('lastName').touched)">
+                Last Name is Required...
+            </span>
         </div>
         <div class="form-group">
             <label>School Identity</label>
             <input type="text" id="schoolIdentity" formControlName="schoolIdentity" class="form-control"
                 placeholder="School Identity">
+            <span class="error-span" *ngIf="(isSubmitted && registerForm.get('schoolIdentity').errors?.required) || 
+            (registerForm.get('schoolIdentity').errors?.required && registerForm.get('schoolIdentity').touched)">
+                School Identity is Required...
+            </span>
         </div>
         <hr>
         <h3>Address Detail</h3>
         <div class="form-group">
             <select class="form-select" (change)="changeProvince($event)" formControlName="provinceId">
-                <option value="0">Open this select menu</option>
+                <option value="0">Open this select province</option>
                 <option *ngFor="let prov of provinces" value="{{prov.id}}">{{ prov.name }}</option>
             </select>
+            <span class="error-span" *ngIf="isSubmitted && registerForm.get('provinceId').value==0">
+                Province is Required...
+            </span>
         </div>
         <div *ngIf="selectedProvince != null" class="form-group">
             <select class="form-select" (change)="changeDistrict($event)" formControlName="districtId">
-                <option value="0">Open this select menu</option>
+                <option value="0">Open this select district</option>
                 <option *ngFor="let dist of selectedProvince.districts" value="{{dist.id}}">{{ dist.name }}</option>
             </select>
+            <span class="error-span" *ngIf="isSubmitted && registerForm.get('districtId').value==0">
+                District is Required...
+            </span>
         </div>
         <div *ngIf="selectedDistrict != null" class="form-group">
             <label>Address Detail</label>
             <input type="text" id="addressDetail" formControlName="addressDetail" class="form-control"
                 placeholder="Address Detail">
+            <span class="error-span" *ngIf="(isSubmitted && registerForm.get('addressDetail').errors?.required) || 
+            (registerForm.get('addressDetail').errors?.required && registerForm.get('addressDetail').touched)">
+                Address Detail is Required...
+            </span>
         </div>
         <hr>
         <div class="row">
