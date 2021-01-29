@@ -48,9 +48,9 @@ namespace ARD.Business.Concrete
             await _addressDal.UpdateAsync(address);
         }
 
-        public async Task<Address> GetAddressByProvinceIdAndDistrictIdAndStudentId(int provinceId, int districtId, int studentId)
+        public async Task<Address> GetAddressByStudentId(int studentId)
         {
-            return await _addressDal.GetAsync(a => a.ProvinceId == provinceId && a.DistrictId == districtId && a.StudentId == studentId);
+            return await _addressDal.GetAsync(a => a.StudentId == studentId);
         }
     }
 }

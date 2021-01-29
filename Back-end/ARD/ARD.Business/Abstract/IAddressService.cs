@@ -20,7 +20,7 @@ namespace ARD.Business.Abstract
 
         Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent();
 
-        Task<Address> GetAddressByProvinceIdAndDistrictIdAndStudentId(int provinceId, int districtId, int studentId);
+        Task<Address> GetAddressByStudentId(int studentId);
 
     }
 }

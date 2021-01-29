@@ -108,10 +108,7 @@ namespace ARD.API.Controllers
             if (studentUpdateDto == null)
                 return BadRequest();
 
-            var existingAddress = await _addressService.GetAddressByProvinceIdAndDistrictIdAndStudentId(
-                studentUpdateDto.ProvinceId,
-                studentUpdateDto.DistrictId,
-                studentUpdateDto.Id);
+            var existingAddress = await _addressService.GetAddressByStudentId(studentUpdateDto.Id);
 
             if (existingAddress == null)
                 return BadRequest();
