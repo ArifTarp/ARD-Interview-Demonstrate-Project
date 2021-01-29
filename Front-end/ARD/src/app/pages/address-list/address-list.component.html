@@ -5,7 +5,7 @@
         <th scope="col">Province</th>
         <th scope="col">District</th>
         <th scope="col">Address Detail</th>
-        <th scope="col">Students</th>
+        <th scope="col">Student</th>
         <!--<th scope="col">Edit</th>
         <th scope="col">Delete</th>-->
       </tr>
@@ -15,11 +15,7 @@
         <td>{{ adr.province.name }}</td>
         <td>{{ adr.district.name }}</td>
         <td>{{ adr.addressDetail }}</td>
-        <td>
-          <span *ngFor="let std of adr.students; last as isLast">{{ std.firstName}} {{std.lastName}}
-            <span *ngIf="isLast==false">,</span>
-          </span>
-        </td>
+        <td>{{ adr.student }}</td>
         <!--<td><button type="button" class="btn btn-danger" (click)="edit(adr.id)"><i class="fa fa-edit"></i></button></td>
         <td><button type="button" class="btn btn-danger" (click)="delete(adr.id)"><i class="fa fa-trash"></i></button></td>-->
       </tr>

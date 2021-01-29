@@ -7,5 +7,5 @@ export class Address {
     province:Province;
     district:District;
     addressDetail?:string;
-    students:Student[];
+    students:Student;
 }

@@ -17,10 +17,6 @@ export class AddressService {
 
     constructor(private httpClient: HttpClient, private router: Router, private alertifyService: AlertifyService) { }
 
-    public getProvincesWithDistricts(): Observable<Province[]> {
-        return this.httpClient.get<Province[]>(this.path + "provinces/getAllWithDistricts");
-    }
-
     public addAddress(newAddress: NewAddress): void {
         this.httpClient.post<NewAddress>(this.path + "addresses/add", newAddress).subscribe(data => {
             //this.router.navigateByUrl('/studentDetail/' + String(data.id))
@@ -28,8 +24,8 @@ export class AddressService {
         });
     }
 
-    public getAddressesWithProvinceAndDistrictAndStudents(): Observable<Address[]> {
-        return this.httpClient.get<Address[]>(this.path + "addresses/getAllWithProvinceAndDistrictAndStudents");
+    public getAddressesWithProvinceAndDistrictAndStudent(): Observable<Address[]> {
+        return this.httpClient.get<Address[]>(this.path + "addresses/getAllWithProvinceAndDistrictAndStudent");
     }
 
     public deleteAddress(addressId: number): void {

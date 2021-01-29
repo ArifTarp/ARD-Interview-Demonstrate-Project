@@ -19,7 +19,7 @@ export class AddressListComponent implements OnInit {
   }
 
   getAddresses(){
-    this.addressService.getAddressesWithProvinceAndDistrictAndStudents().subscribe(data => {
+    this.addressService.getAddressesWithProvinceAndDistrictAndStudent().subscribe(data => {
       this.addresses = data;
     });
   }

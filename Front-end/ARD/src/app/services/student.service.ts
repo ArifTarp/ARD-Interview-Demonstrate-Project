@@ -24,7 +24,7 @@ export class StudentService {
     }
 
     public getStudents(): Observable<Student[]> {
-        return this.httpClient.get<Student[]>(this.path + "students/getAllWithAddresses/");
+        return this.httpClient.get<Student[]>(this.path + "students/getAllWithAddress/");
     }
 
     public deleteStudent(studentId: number): void {
