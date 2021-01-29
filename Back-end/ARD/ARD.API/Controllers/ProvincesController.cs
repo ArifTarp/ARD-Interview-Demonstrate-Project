@@ -16,12 +16,10 @@ namespace ARD.API.Controllers
     public class ProvincesController : Controller
     {
         private readonly IProvinceService _provinceService;
-        private readonly IMapper _mapper;
 
-        public ProvincesController(IProvinceService provinceService, IMapper mapper)
+        public ProvincesController(IProvinceService provinceService)
         {
             _provinceService = provinceService;
-            _mapper = mapper;
         }
 
         [HttpGet()]
@@ -49,36 +47,6 @@ namespace ARD.API.Controllers
                 return BadRequest("Uncorrected id.");
 
             return Ok(provinces);
-        }
-
-        [HttpDelete("delete")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            await _provinceService.DeleteProvinceAsync(id);
-            return Ok();
-        }
-
-        [HttpPost("add")]
-        public async Task<IActionResult> Add([FromBody] ProvinceAddDto provinceAddDto)
-        {
-            if (provinceAddDto == null)
-                return BadRequest();
-
-            var newProvince = _mapper.Map<Province>(provinceAddDto);
-            await _provinceService.AddProvinceAsync(newProvince);
-
-            return Ok();
-        }
-
-        [HttpPut("update")]
-        public async Task<IActionResult> Update(ProvinceUpdateDto provinceUpdateDto)
-        {
-            if (provinceUpdateDto == null)
-                return BadRequest();
-
-            var newProvince = _mapper.Map<Province>(provinceUpdateDto);
-            await _provinceService.UpdateProvinceAsync(newProvince);
-            return Ok();
         }
     }
 }

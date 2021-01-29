@@ -18,9 +18,9 @@ namespace ARD.Business.Abstract
 
         Task UpdateAddressAsync(Address address);
 
-        Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudents();
+        Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent();
 
-        Task<Address> GetAddressByProvinceIdAndDistrictId(int provinceId, int districtId);
+        Task<Address> GetAddressByProvinceIdAndDistrictIdAndStudentId(int provinceId, int districtId, int studentId);
 
     }
 }

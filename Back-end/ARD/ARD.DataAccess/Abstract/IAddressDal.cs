@@ -10,6 +10,6 @@ namespace ARD.DataAccess.Abstract
 {
     public interface IAddressDal : IEntityRepository<Address>
     {
-        Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudents(Expression<Func<Address, bool>> filter = null);
+        Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent(Expression<Func<Address, bool>> filter = null);
     }
 }

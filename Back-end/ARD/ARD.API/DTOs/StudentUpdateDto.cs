@@ -11,6 +11,8 @@ namespace ARD.API.DTOs
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SchoolIdentity { get; set; }
+        public string AddressDetail { get; set; }
+
 
         public int ProvinceId { get; set; }
         public int DistrictId { get; set; }

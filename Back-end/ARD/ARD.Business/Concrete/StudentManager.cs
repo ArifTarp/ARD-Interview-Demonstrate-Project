@@ -22,9 +22,9 @@ namespace ARD.Business.Concrete
             return await _studentDal.GetListAsync();
         }
 
-        public async Task<ICollection<Student>> GetStudentsWithAddressesAsync()
+        public async Task<ICollection<Student>> GetStudentsWithAddressAsync()
         {
-            return await _studentDal.GetStudentsWithAddresses();
+            return await _studentDal.GetStudentsWithAddress();
         }
 
         public async Task<Student> GetStudentWithAddressByIdAsync(int studentId)
@@ -37,9 +37,9 @@ namespace ARD.Business.Concrete
             return await _studentDal.GetAsync(s => s.Id == id);
         }
 
-        public async Task AddStudentAsync(Student student)
+        public async Task<Student> AddStudentAsync(Student student)
         {
-            await _studentDal.AddAsync(student);
+            return await _studentDal.AddAsync(student);
         }
 
         public async Task DeleteStudentAsync(int id)

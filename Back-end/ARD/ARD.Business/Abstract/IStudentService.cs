@@ -12,13 +12,13 @@ namespace ARD.Business.Abstract
 
         Task<Student> GetStudentByIdAsync(int id);
 
-        Task AddStudentAsync(Student student);
+        Task<Student> AddStudentAsync(Student student);
 
         Task DeleteStudentAsync(int id);
 
         Task UpdateStudentAsync(Student student);
 
-        Task<ICollection<Student>> GetStudentsWithAddressesAsync();
+        Task<ICollection<Student>> GetStudentsWithAddressAsync();
 
         Task<Student> GetStudentWithAddressByIdAsync(int studentId);
 

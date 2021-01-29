@@ -50,15 +50,24 @@ export class StudentFormComponent implements OnInit {
     var schoolIdentity = this.route.snapshot.paramMap.get('schoolIdentity');
     var provinceId = parseInt(this.route.snapshot.paramMap.get('provinceId'));
     var districtId = parseInt(this.route.snapshot.paramMap.get('districtId'));   
+    var addressDetail = this.route.snapshot.paramMap.get('addressDetail');   
 
     if (firstName && lastName && schoolIdentity && provinceId && districtId) {
       this.registerForm.get('firstName').setValue(firstName, { onlySelf: true })
       this.registerForm.get('lastName').setValue(lastName, { onlySelf: true })
       this.registerForm.get('schoolIdentity').setValue(schoolIdentity, { onlySelf: true })
       this.registerForm.get('provinceId').setValue(provinceId, { onlySelf: true })
-      this.registerForm.get('districtId').setValue(districtId, { onlySelf: true }) 
+      this.registerForm.get('districtId').setValue(districtId, { onlySelf: true })
+      this.registerForm.get('addressDetail').setValue(addressDetail, { onlySelf: true }) 
       
       this.selectedProvince = this.provinces.find(p => p.id == parseInt(this.route.snapshot.paramMap.get('provinceId')));
+      for (let index = 0; index < this.provinces.length; index++) {
+        var district = this.provinces[index].districts.find(d => d.id == districtId)
+        if (district) {
+          this.selectedDistrict = district;
+          break; 
+        }
+      }
       this.isUpdate = true;
     }
     else{

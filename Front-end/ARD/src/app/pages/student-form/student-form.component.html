@@ -1,6 +1,6 @@
 <div class="form-div">
     <form [formGroup]="registerForm"  *ngIf="registerForm" (ngSubmit)="register()">
-        <h3 class="text-center font-weight-bold">{{ header }}</h3>
+        <h1 class="text-center font-weight-bold">{{ header }}</h1>
         <div class="form-group">
             <label>First Name</label>
             <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="First Name"
@@ -15,6 +15,8 @@
             <input type="text" id="schoolIdentity" formControlName="schoolIdentity" class="form-control"
                 placeholder="School Identity">
         </div>
+        <hr>
+        <h3>Address Detail</h3>
         <div class="form-group">
             <select class="form-select" (change)="changeProvince($event)" formControlName="provinceId">
                 <option value="0">Open this select menu</option>

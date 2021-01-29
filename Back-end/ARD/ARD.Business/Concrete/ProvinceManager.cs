@@ -38,21 +38,6 @@ namespace ARD.Business.Concrete
             return await _provinceDal.GetAsync(s => s.Id == id);
         }
 
-        public async Task AddProvinceAsync(Province province)
-        {
-            await _provinceDal.AddAsync(province);
-        }
-
-        public async Task DeleteProvinceAsync(int id)
-        {
-            await _provinceDal.DeleteAsync(new Province { Id = id });
-        }
-
-        public async Task UpdateProvinceAsync(Province province)
-        {
-            await _provinceDal.UpdateAsync(province);
-        }
-
         public async Task<Province> GetByProvinceIdAndDistrictId(int provinceId, int districtId)
         {
             return await _provinceDal.GetWithDistrictsAsync(p=>p.Id==provinceId && p.Districts.Contains(new District { Id = districtId }));

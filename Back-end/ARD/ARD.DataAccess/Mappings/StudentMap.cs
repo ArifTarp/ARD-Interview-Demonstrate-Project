@@ -13,8 +13,6 @@ namespace ARD.DataAccess.Mappings
         {
             builder.ToTable("Students");
             builder.HasKey(s => s.Id);
-
-            builder.HasOne(s => s.Address).WithMany(a => a.Students).HasForeignKey(s => s.AddressId);
         }
     }
 }
