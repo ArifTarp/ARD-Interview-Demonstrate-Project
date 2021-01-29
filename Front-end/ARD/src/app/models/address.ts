@@ -3,9 +3,9 @@ import { Province } from "./Province";
 import { Student } from "./student";
 
 export class Address {
-    id?:number;
+    id:number;
     province:Province;
     district:District;
-    addressDetail?:string;
+    addressDetail:string;
     students:Student;
 }
