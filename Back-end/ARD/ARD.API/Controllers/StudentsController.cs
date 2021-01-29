@@ -121,6 +121,7 @@ namespace ARD.API.Controllers
             await _addressService.UpdateAddressAsync(
                 new Address
                 {
+                    Id = existingAddress.Id,
                     ProvinceId = studentUpdateDto.ProvinceId,
                     DistrictId = studentUpdateDto.DistrictId,
                     AddressDetail = studentUpdateDto.AddressDetail,
