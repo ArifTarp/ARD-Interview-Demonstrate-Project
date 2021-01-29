@@ -31,20 +31,5 @@ namespace ARD.Business.Concrete
         {
             return await _districtDal.GetAsync(d => d.Name == name);
         }
-
-        public async Task AddDistrictAsync(District district)
-        {
-            await _districtDal.AddAsync(district);
-        }
-
-        public async Task DeleteDistrictAsync(int id)
-        {
-            await _districtDal.DeleteAsync(new District { Id = id });
-        }
-
-        public async Task UpdateDistrictAsync(District district)
-        {
-            await _districtDal.UpdateAsync(district);
-        }
     }
 }

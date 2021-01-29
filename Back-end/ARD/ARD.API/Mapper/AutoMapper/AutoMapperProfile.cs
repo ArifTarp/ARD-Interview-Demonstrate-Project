@@ -46,12 +46,6 @@ namespace ARD.API.Mapper.AutoMapper
             {
                 opt.MapFrom(src => src.AddressUpdateDto.AddressDetail);
             });
-
-            CreateMap<ProvinceAddDto, Province>().ReverseMap();
-            CreateMap<ProvinceUpdateDto, Province>().ReverseMap();
-
-            CreateMap<DistrictAddDto, District>().ReverseMap();
-            CreateMap<DistrictUpdateDto, District>().ReverseMap();
         }
     }
 }

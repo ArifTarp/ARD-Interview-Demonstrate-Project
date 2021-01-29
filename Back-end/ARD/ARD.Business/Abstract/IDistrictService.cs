@@ -12,12 +12,6 @@ namespace ARD.Business.Abstract
 
         Task<District> GetDistrictByIdAsync(int id);
 
-        Task AddDistrictAsync(District district);
-
-        Task DeleteDistrictAsync(int id);
-
-        Task UpdateDistrictAsync(District district);
-
 
         Task<District> GetByNameAsync(string name);
 

@@ -12,12 +12,6 @@ namespace ARD.Business.Abstract
 
         Task<Province> GetProvinceByIdAsync(int id);
 
-        Task AddProvinceAsync(Province province);
-
-        Task DeleteProvinceAsync(int id);
-
-        Task UpdateProvinceAsync(Province province);
-
         Task<ICollection<Province>> GetAllWithDistrictsAsync();
         Task<Province> GetByNameAsync(string name);
         Task<Province> GetByProvinceIdAndDistrictId(int provinceId, int districtId);
