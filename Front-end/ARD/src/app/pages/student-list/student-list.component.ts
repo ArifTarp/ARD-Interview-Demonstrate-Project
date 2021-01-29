@@ -33,7 +33,8 @@ export class StudentListComponent implements OnInit {
       lastName:student.lastName,
       schoolIdentity:student.schoolIdentity,
       provinceId:student.address.province.id,
-      districtId:student.address.district.id
+      districtId:student.address.district.id,
+      addressDetail:student.address.addressDetail
     }]);
   }
 
