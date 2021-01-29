@@ -7,11 +7,6 @@ namespace ARD.Entity.Concrete
 {
     public class Address : IEntity
     {
-        public Address()
-        {
-            Students = new List<Student>();
-        }
-
         public int Id { get; set; }
         public string AddressDetail { get; set; }
 
@@ -20,7 +15,8 @@ namespace ARD.Entity.Concrete
         public Province Province { get; set; }
         public int DistrictId { get; set; }
         public District District { get; set; }
-        public ICollection<Student> Students { get; set; }
+        public int StudentId { get; set; }
+        public Student Student { get; set; }
 
     }
 }

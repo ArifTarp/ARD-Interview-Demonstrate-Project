@@ -18,8 +18,8 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
             using (var context = new ARDDataContext())
             {
                 if (filter == null)
-                    return await context.Set<Address>().Include(a => a.Province).Include(a => a.District).Include(a => a.Students).ToListAsync();
-                return await context.Set<Address>().Include(a => a.Province).Include(a => a.District).Include(a => a.Students).Where(filter).ToListAsync();
+                    return await context.Set<Address>().Include(a => a.Province).Include(a => a.District).Include(a => a.Student).ToListAsync();
+                return await context.Set<Address>().Include(a => a.Province).Include(a => a.District).Include(a => a.Student).Where(filter).ToListAsync();
             }
         }
 

@@ -81,10 +81,10 @@ namespace ARD.API.Controllers
             if (existingProvinceWithDistrict == null)
                 return BadRequest();
 
-            var newAddress = await _addressService.AddAddressAsync(new Address { ProvinceId=studentAddDto.ProvinceId, DistrictId=studentAddDto.DistrictId,AddressDetail=studentAddDto.AddressDetail});
             var newStudent = _mapper.Map<Student>(studentAddDto);
-            newStudent.AddressId = newAddress.Id;
-            await _studentService.AddStudentAsync(newStudent);
+            var addedStudent = await _studentService.AddStudentAsync(newStudent);
+            
+            await _addressService.AddAddressAsync(new Address { ProvinceId=studentAddDto.ProvinceId, DistrictId=studentAddDto.DistrictId,AddressDetail=studentAddDto.AddressDetail, StudentId=addedStudent.Id});
 
             return Ok(studentAddDto);
         }
@@ -95,14 +95,15 @@ namespace ARD.API.Controllers
             if (studentUpdateDto == null)
                 return BadRequest();
 
-            var existingAddress = await _addressService.GetAddressByProvinceIdAndDistrictId(studentUpdateDto.ProvinceId, studentUpdateDto.DistrictId);
+            var existingAddress = await _addressService.GetAddressByProvinceIdAndDistrictIdAndStudentId(studentUpdateDto.ProvinceId, studentUpdateDto.DistrictId, studentUpdateDto.Id);
 
             if (existingAddress == null)
                 return BadRequest();
 
             var newStudent = _mapper.Map<Student>(studentUpdateDto);
-            newStudent.AddressId = existingAddress.Id;
             await _studentService.UpdateStudentAsync(newStudent);
+            await _addressService.UpdateAddressAsync(new Address { ProvinceId = studentUpdateDto.ProvinceId, DistrictId = studentUpdateDto.DistrictId,AddressDetail = studentUpdateDto.AddressDetail, StudentId = studentUpdateDto.Id});
+
             return Ok(studentUpdateDto);
         }
     }
