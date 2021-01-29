@@ -36,10 +36,10 @@ namespace ARD.API.Controllers
             return Ok(students);
         }
 
-        [HttpGet("getAllWithAddresses")]
-        public async Task<IActionResult> GetAllWithAddresses()
+        [HttpGet("getAllWithAddress")]
+        public async Task<IActionResult> GetAllWithAddress()
         {
-            var students = await _studentService.GetStudentsWithAddressesAsync();
+            var students = await _studentService.GetStudentsWithAddressAsync();
 
             return Ok(students);
         }

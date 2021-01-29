@@ -13,7 +13,7 @@ namespace ARD.DataAccess.Concrete.EntityFrameworkCore
 {
     public class EfAddressDal : EfEntityRepositoryBase<Address, ARDDataContext>, IAddressDal
     {
-        public async Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudents(Expression<Func<Address, bool>> filter = null)
+        public async Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent(Expression<Func<Address, bool>> filter = null)
         {
             using (var context = new ARDDataContext())
             {

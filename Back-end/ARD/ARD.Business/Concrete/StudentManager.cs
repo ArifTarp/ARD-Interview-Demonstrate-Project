@@ -22,9 +22,9 @@ namespace ARD.Business.Concrete
             return await _studentDal.GetListAsync();
         }
 
-        public async Task<ICollection<Student>> GetStudentsWithAddressesAsync()
+        public async Task<ICollection<Student>> GetStudentsWithAddressAsync()
         {
-            return await _studentDal.GetStudentsWithAddresses();
+            return await _studentDal.GetStudentsWithAddress();
         }
 
         public async Task<Student> GetStudentWithAddressByIdAsync(int studentId)

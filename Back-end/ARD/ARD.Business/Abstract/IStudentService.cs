@@ -18,7 +18,7 @@ namespace ARD.Business.Abstract
 
         Task UpdateStudentAsync(Student student);
 
-        Task<ICollection<Student>> GetStudentsWithAddressesAsync();
+        Task<ICollection<Student>> GetStudentsWithAddressAsync();
 
         Task<Student> GetStudentWithAddressByIdAsync(int studentId);
 

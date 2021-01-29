@@ -10,7 +10,7 @@ namespace ARD.DataAccess.Abstract
 {
     public interface IStudentDal : IEntityRepository<Student>
     {
-        Task<List<Student>> GetStudentsWithAddresses(Expression<Func<Student, bool>> filter = null);
+        Task<List<Student>> GetStudentsWithAddress(Expression<Func<Student, bool>> filter = null);
         Task<Student> GetStudentWithAddressByIdAsync(Expression<Func<Student, bool>> filter = null);
     }
 }

@@ -22,9 +22,9 @@ namespace ARD.Business.Concrete
             return await _addressDal.GetListAsync();
         }
 
-        public async Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudents()
+        public async Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent()
         {
-            return await _addressDal.GetAllWithProvinceAndDistrictAndStudents();
+            return await _addressDal.GetAllWithProvinceAndDistrictAndStudent();
         }
 
 
