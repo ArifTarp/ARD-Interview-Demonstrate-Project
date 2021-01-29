@@ -5,10 +5,6 @@ import { Router } from '@angular/router';
 import { Province } from '../models/Province';
 import { Observable } from "rxjs";
 
-import { NewAddress } from "../models/newAddress";
-import { AlertifyService } from "./alertify.service";
-import { Address } from "../models/Address";
-
 @Injectable({
     providedIn: "root"
 })
