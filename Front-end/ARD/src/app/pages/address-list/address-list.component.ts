@@ -23,20 +23,4 @@ export class AddressListComponent implements OnInit {
       this.addresses = data;
     });
   }
-
-  /*edit(addressId){
-    var address = this.addresses.find(a=>a.id==addressId);
-    this.router.navigate(['/formAddress',
-    {
-      id:address.id,
-      provinceName:address.province.name,
-      districtName:address.district.name,
-      addressDetail:address.addressDetail
-    }]);
-  }
-
-  delete(addressId){
-    this.addressService.deleteAddress(addressId);
-  }*/
-
 }
