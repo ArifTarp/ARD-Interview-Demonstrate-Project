@@ -1,4 +1,4 @@
-﻿using ARD.API.DTOs;
+﻿using ARD.Entity.DTOs;
 using ARD.Entity.Concrete;
 using AutoMapper;
 using System;

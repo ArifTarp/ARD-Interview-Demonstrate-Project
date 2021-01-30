@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ARD.API.DTOs;
+using ARD.Entity.DTOs;
 using ARD.Business.Abstract;
 using ARD.Entity.Concrete;
 using AutoMapper;

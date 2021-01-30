@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ARD.API.DTOs
+namespace ARD.Entity.DTOs
 {
-    public class AddressUpdateForMapDto
+    public class AddressAddForMapDto
     {
         public Province Province { get; set; }
         public District District { get; set; }
-        public AddressUpdateDto AddressUpdateDto { get; set; }
+        public AddressAddDto AddressAddDto { get; set; }
+
     }
 }
