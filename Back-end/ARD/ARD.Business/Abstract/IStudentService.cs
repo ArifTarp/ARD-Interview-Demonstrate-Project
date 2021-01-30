@@ -14,11 +14,7 @@ namespace ARD.Business.Abstract
 
         Task<IDataResult<Student>> GetStudentByIdAsync(int id);
 
-        Task<Student> AddStudentAsync(Student student);
-
-        Task<IResult> DeleteStudentAsync(int id);
-
-        Task UpdateStudentAsync(Student student);
+        Task<IResult> DeleteStudentWithAddressAsync(int id);
 
         Task<IDataResult<ICollection<Student>>> GetStudentsWithAddressAsync();
 
