@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Student } from 'src/app/models/student';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { StudentService } from 'src/app/services/student.service';
 
 @Component({
@@ -12,7 +13,10 @@ export class StudentListComponent implements OnInit {
 
   students: Student[];
 
-  constructor(private studentService: StudentService, private router: Router) { }
+  constructor(
+    private studentService: StudentService, 
+    private router: Router, 
+    private alertifyService: AlertifyService) { }
 
   ngOnInit(): void {
     this.getStudents();
@@ -21,6 +25,8 @@ export class StudentListComponent implements OnInit {
   getStudents(){
     this.studentService.getStudents().subscribe(data => {
       this.students = data;
+    },error=>{
+      this.alertifyService.error("Get list of student is unsuccessful");
     });
   }
 
