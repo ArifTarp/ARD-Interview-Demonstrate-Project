@@ -16,20 +16,10 @@ namespace ARD.API.Controllers
     public class StudentsController : Controller
     {
         private readonly IStudentService _studentService;
-        private readonly IMapper _mapper;
-        private readonly IAddressService _addressService;
-        private readonly IProvinceService _provinceService;
 
-        public StudentsController(
-            IStudentService studentService,
-            IMapper mapper,
-            IAddressService addressService,
-            IProvinceService provinceService)
+        public StudentsController(IStudentService studentService)
         {
             _studentService = studentService;
-            _mapper = mapper;
-            _addressService = addressService;
-            _provinceService = provinceService;
         }
 
         [HttpGet()]
