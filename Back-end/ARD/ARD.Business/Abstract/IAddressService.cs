@@ -15,8 +15,6 @@ namespace ARD.Business.Abstract
 
         Task<Address> AddAddressAsync(Address address);
 
-        Task DeleteAddressAsync(int id);
-
         Task UpdateAddressAsync(Address address);
 
         Task<IDataResult<ICollection<Address>>> GetAllWithProvinceAndDistrictAndStudent();

@@ -46,11 +46,6 @@ namespace ARD.Business.Concrete
             return await _addressDal.AddAsync(address);
         }
 
-        public async Task DeleteAddressAsync(int id)
-        {
-            await _addressDal.DeleteAsync(new Address { Id = id });
-        }
-
         public async Task UpdateAddressAsync(Address address)
         {
             await _addressDal.UpdateAsync(address);
