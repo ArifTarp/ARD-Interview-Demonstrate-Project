@@ -1,8 +1,11 @@
 ﻿using ARD.Business.Abstract;
 using ARD.DataAccess.Abstract;
 using ARD.Entity.Concrete;
+using Common.Utilities.Results;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -22,9 +25,14 @@ namespace ARD.Business.Concrete
             return await _addressDal.GetListAsync();
         }
 
-        public async Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent()
+        public async Task<IDataResult<ICollection<Address>>> GetAllWithProvinceAndDistrictAndStudent()
         {
-            return await _addressDal.GetAllWithProvinceAndDistrictAndStudent();
+            var addresses = await _addressDal.GetAllWithProvinceAndDistrictAndStudent();
+
+            if (addresses == null)
+                return new ErrorDataResult<ICollection<Address>>(new List<Address>(), HttpStatusCode.NotFound);
+
+            return new SuccessfulDataResult<ICollection<Address>>(addresses, HttpStatusCode.OK);
         }
 
 
@@ -36,11 +44,6 @@ namespace ARD.Business.Concrete
         public async Task<Address> AddAddressAsync(Address address)
         {
             return await _addressDal.AddAsync(address);
-        }
-
-        public async Task DeleteAddressAsync(int id)
-        {
-            await _addressDal.DeleteAsync(new Address { Id = id });
         }
 
         public async Task UpdateAddressAsync(Address address)

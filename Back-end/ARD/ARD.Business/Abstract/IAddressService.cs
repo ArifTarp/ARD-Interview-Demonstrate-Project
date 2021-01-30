@@ -1,4 +1,5 @@
 ﻿using ARD.Entity.Concrete;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,11 +15,9 @@ namespace ARD.Business.Abstract
 
         Task<Address> AddAddressAsync(Address address);
 
-        Task DeleteAddressAsync(int id);
-
         Task UpdateAddressAsync(Address address);
 
-        Task<ICollection<Address>> GetAllWithProvinceAndDistrictAndStudent();
+        Task<IDataResult<ICollection<Address>>> GetAllWithProvinceAndDistrictAndStudent();
 
         Task<Address> GetAddressByStudentId(int studentId);
 

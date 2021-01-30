@@ -18,8 +18,9 @@ export class StudentService {
 
     public addStudent(newStudent: NewStudent): void {
         this.httpClient.post<NewStudent>(this.path + "students/add", newStudent).subscribe(data => {
-            //this.router.navigateByUrl('/studentDetail/' + String(data.id))
-            this.alertifyService.success("Registrary of the student named " + data.firstName + data.lastName + " is successful");
+            this.alertifyService.success("Registrary of the student named " + data.firstName + " " + data.lastName + " is successful");
+        },error=>{
+            this.alertifyService.error("Registrary of the student is unsuccessful");
         });
     }
 
@@ -30,18 +31,19 @@ export class StudentService {
     public deleteStudent(studentId: number): void {
         this.httpClient.delete(this.path + "students/delete/" + studentId).subscribe(data=>{
           this.alertifyService.error("The student is deleted successful");
-          window.location.reload();
+          setTimeout(() => {
+            window.location.reload();
+          }, 1500);
+        },error=>{
+            this.alertifyService.error("The student is deleted unsuccessful");
         });
-    }
-
-    public getStudentById(studentId: number): Observable<Student> {
-        return this.httpClient.get<Student>(this.path + "students/" + studentId);
     }
 
     public updateStudent(newStudent: NewStudent): void {
         this.httpClient.put<NewStudent>(this.path + "students/update", newStudent).subscribe(data => {
-            //this.router.navigateByUrl('/studentDetail/' + String(data.id))
-            this.alertifyService.success("Update of the student named " + data.firstName + data.lastName + " is successful");
+            this.alertifyService.success("Update of the student named " + data.firstName + " " + data.lastName + " is successful");
+        },error=>{
+            this.alertifyService.error("Update of the student is unsuccessful");
         });
     }
 }

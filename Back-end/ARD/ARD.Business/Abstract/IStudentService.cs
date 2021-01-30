@@ -1,4 +1,6 @@
 ﻿using ARD.Entity.Concrete;
+using ARD.Entity.DTOs;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,19 +10,19 @@ namespace ARD.Business.Abstract
 {
     public interface IStudentService
     {
-        Task<ICollection<Student>> GetAllAsync();
+        Task<IDataResult<ICollection<Student>>> GetAllAsync();
 
-        Task<Student> GetStudentByIdAsync(int id);
+        Task<IDataResult<Student>> GetStudentByIdAsync(int id);
 
-        Task<Student> AddStudentAsync(Student student);
+        Task<IResult> DeleteStudentWithAddressAsync(int id);
 
-        Task DeleteStudentAsync(int id);
+        Task<IDataResult<ICollection<Student>>> GetStudentsWithAddressAsync();
 
-        Task UpdateStudentAsync(Student student);
+        Task<IDataResult<Student>> GetStudentWithAddressByIdAsync(int studentId);
 
-        Task<ICollection<Student>> GetStudentsWithAddressAsync();
+        Task<IDataResult<StudentUpdateDto>> UpdateStudentWithAddressAsync(StudentUpdateDto studentUpdateDto);
 
-        Task<Student> GetStudentWithAddressByIdAsync(int studentId);
+        Task<IDataResult<StudentAddDto>> AddStudentWithAddressAsync(StudentAddDto studentAddDto);
 
     }
 }
