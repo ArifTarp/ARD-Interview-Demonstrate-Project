@@ -28,9 +28,14 @@ namespace ARD.Business.Concrete
             _provinceService = provinceService;
         }
 
-        public async Task<ICollection<Student>> GetAllAsync()
+        public async Task<IDataResult<ICollection<Student>>> GetAllAsync()
         {
-            return await _studentDal.GetListAsync();
+            var students = await _studentDal.GetListAsync();
+
+            if (students == null)
+                return new ErrorDataResult<ICollection<Student>>(new List<Student>(), HttpStatusCode.NotFound);
+
+            return new SuccessfulDataResult<ICollection<Student>>(students, HttpStatusCode.OK);
         }
 
         public async Task<IDataResult<ICollection<Student>>> GetStudentsWithAddressAsync()

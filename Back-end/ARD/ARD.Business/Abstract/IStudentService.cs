@@ -10,7 +10,7 @@ namespace ARD.Business.Abstract
 {
     public interface IStudentService
     {
-        Task<ICollection<Student>> GetAllAsync();
+        Task<IDataResult<ICollection<Student>>> GetAllAsync();
 
         Task<IDataResult<Student>> GetStudentByIdAsync(int id);
 
