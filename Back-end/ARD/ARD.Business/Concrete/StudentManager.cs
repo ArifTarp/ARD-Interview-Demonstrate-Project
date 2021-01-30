@@ -18,12 +18,14 @@ namespace ARD.Business.Concrete
         private readonly IStudentDal _studentDal;
         private readonly IAddressService _addressService;
         private readonly IMapper _mapper;
+        private readonly IProvinceService _provinceService;
 
-        public StudentManager(IStudentDal studentDal, IAddressService addressService, IMapper mapper)
+        public StudentManager(IStudentDal studentDal, IAddressService addressService, IMapper mapper, IProvinceService provinceService)
         {
             _studentDal = studentDal;
             _addressService = addressService;
             _mapper = mapper;
+            _provinceService = provinceService;
         }
 
         public async Task<ICollection<Student>> GetAllAsync()
@@ -59,6 +61,38 @@ namespace ARD.Business.Concrete
         public async Task UpdateStudentAsync(Student student)
         {
             await _studentDal.UpdateAsync(student);
+        }
+
+        public async Task<IDataResult<StudentAddDto>> AddStudentWithAddressAsync(StudentAddDto studentAddDto)
+        {
+            if (studentAddDto == null)
+                return new ErrorDataResult<StudentAddDto>(studentAddDto, HttpStatusCode.NotAcceptable);
+
+            var existingProvinceWithDistrict = await _provinceService.GetByProvinceIdAndDistrictId(
+                studentAddDto.ProvinceId,
+                studentAddDto.DistrictId);
+
+            if (existingProvinceWithDistrict == null)
+                return new ErrorDataResult<StudentAddDto>(studentAddDto, HttpStatusCode.NotFound);
+
+            var newStudent = _mapper.Map<Student>(studentAddDto);
+            var addedStudent = await AddStudentAsync(newStudent);
+
+            await AddAddress(studentAddDto, addedStudent);
+
+            return new SuccessfulDataResult<StudentAddDto>(studentAddDto, HttpStatusCode.OK);
+        }
+
+        private async Task AddAddress(StudentAddDto studentAddDto, Student addedStudent)
+        {
+            await _addressService.AddAddressAsync(
+                new Address
+                {
+                    ProvinceId = studentAddDto.ProvinceId,
+                    DistrictId = studentAddDto.DistrictId,
+                    AddressDetail = studentAddDto.AddressDetail,
+                    StudentId = addedStudent.Id
+                });
         }
 
         public async Task<IDataResult<StudentUpdateDto>> UpdateStudentWithAddressAsync(StudentUpdateDto studentUpdateDto)

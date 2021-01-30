@@ -77,29 +77,7 @@ namespace ARD.API.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] StudentAddDto studentAddDto)
         {
-            if (studentAddDto == null)
-                return BadRequest();
-
-            var existingProvinceWithDistrict = await _provinceService.GetByProvinceIdAndDistrictId(
-                studentAddDto.ProvinceId,
-                studentAddDto.DistrictId);
-
-            if (existingProvinceWithDistrict == null)
-                return BadRequest();
-
-            var newStudent = _mapper.Map<Student>(studentAddDto);
-            var addedStudent = await _studentService.AddStudentAsync(newStudent);
-
-            await _addressService.AddAddressAsync(
-                new Address
-                {
-                    ProvinceId = studentAddDto.ProvinceId,
-                    DistrictId = studentAddDto.DistrictId,
-                    AddressDetail = studentAddDto.AddressDetail,
-                    StudentId = addedStudent.Id
-                });
-
-            return Ok(studentAddDto);
+            return StatusCode((await _studentService.AddStudentWithAddressAsync(studentAddDto)).HttpStatusCode);
         }
 
         [HttpPut("update")]

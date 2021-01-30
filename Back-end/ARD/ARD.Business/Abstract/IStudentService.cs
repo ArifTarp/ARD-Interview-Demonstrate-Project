@@ -26,5 +26,7 @@ namespace ARD.Business.Abstract
 
         Task<IDataResult<StudentUpdateDto>> UpdateStudentWithAddressAsync(StudentUpdateDto studentUpdateDto);
 
+        Task<IDataResult<StudentAddDto>> AddStudentWithAddressAsync(StudentAddDto studentAddDto);
+
     }
 }
