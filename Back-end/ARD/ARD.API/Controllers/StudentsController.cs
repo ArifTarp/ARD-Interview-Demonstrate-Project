@@ -70,13 +70,15 @@ namespace ARD.API.Controllers
         [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] StudentAddDto studentAddDto)
         {
-            return StatusCode((await _studentService.AddStudentWithAddressAsync(studentAddDto)).HttpStatusCode);
+            var result = await _studentService.AddStudentWithAddressAsync(studentAddDto);
+            return StatusCode(result.HttpStatusCode, result.Data);
         }
 
         [HttpPut("update")]
         public async Task<IActionResult> Update(StudentUpdateDto studentUpdateDto)
         {
-            return StatusCode((await _studentService.UpdateStudentWithAddressAsync(studentUpdateDto)).HttpStatusCode);
+            var result = await _studentService.UpdateStudentWithAddressAsync(studentUpdateDto);
+            return StatusCode(result.HttpStatusCode, result.Data);
         }
     }
 }
