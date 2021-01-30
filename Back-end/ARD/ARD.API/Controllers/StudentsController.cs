@@ -105,27 +105,7 @@ namespace ARD.API.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> Update(StudentUpdateDto studentUpdateDto)
         {
-            if (studentUpdateDto == null)
-                return BadRequest();
-
-            var existingAddress = await _addressService.GetAddressByStudentId(studentUpdateDto.Id);
-
-            if (existingAddress == null)
-                return BadRequest();
-
-            var newStudent = _mapper.Map<Student>(studentUpdateDto);
-            await _studentService.UpdateStudentAsync(newStudent);
-            await _addressService.UpdateAddressAsync(
-                new Address
-                {
-                    Id = existingAddress.Id,
-                    ProvinceId = studentUpdateDto.ProvinceId,
-                    DistrictId = studentUpdateDto.DistrictId,
-                    AddressDetail = studentUpdateDto.AddressDetail,
-                    StudentId = studentUpdateDto.Id
-                });
-
-            return Ok(studentUpdateDto);
+            return StatusCode((await _studentService.UpdateStudentWithAddressAsync(studentUpdateDto)).HttpStatusCode);
         }
     }
 }

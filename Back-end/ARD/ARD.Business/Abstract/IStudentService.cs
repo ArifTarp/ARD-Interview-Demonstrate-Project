@@ -1,4 +1,6 @@
 ﻿using ARD.Entity.Concrete;
+using ARD.Entity.DTOs;
+using Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +23,8 @@ namespace ARD.Business.Abstract
         Task<ICollection<Student>> GetStudentsWithAddressAsync();
 
         Task<Student> GetStudentWithAddressByIdAsync(int studentId);
+
+        Task<IDataResult<StudentUpdateDto>> UpdateStudentWithAddressAsync(StudentUpdateDto studentUpdateDto);
 
     }
 }
