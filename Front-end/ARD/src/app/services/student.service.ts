@@ -18,8 +18,7 @@ export class StudentService {
 
     public addStudent(newStudent: NewStudent): void {
         this.httpClient.post<NewStudent>(this.path + "students/add", newStudent).subscribe(data => {
-            //this.router.navigateByUrl('/studentDetail/' + String(data.id))
-            this.alertifyService.success("Registrary of the student named " + data.firstName + data.lastName + " is successful");
+            this.alertifyService.success("Registrary of the student named " + data.firstName + " " + data.lastName + " is successful");
         });
     }
 
@@ -40,8 +39,7 @@ export class StudentService {
 
     public updateStudent(newStudent: NewStudent): void {
         this.httpClient.put<NewStudent>(this.path + "students/update", newStudent).subscribe(data => {
-            //this.router.navigateByUrl('/studentDetail/' + String(data.id))
-            this.alertifyService.success("Update of the student named " + data.firstName + data.lastName + " is successful");
+            this.alertifyService.success("Update of the student named " + data.firstName + " " + data.lastName + " is successful");
         });
     }
 }
