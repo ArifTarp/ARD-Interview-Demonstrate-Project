@@ -51,9 +51,8 @@ namespace ARD.API.Controllers
         [HttpGet("getStudentWithAddressById/{id}")]
         public async Task<IActionResult> GetStudentWithAddressById(int id)
         {
-            var student = await _studentService.GetStudentWithAddressByIdAsync(id);
-
-            return Ok(student);
+            var result = await _studentService.GetStudentWithAddressByIdAsync(id);
+            return StatusCode(result.HttpStatusCode, result.Data);
         }
 
 

@@ -38,9 +38,14 @@ namespace ARD.Business.Concrete
             return await _studentDal.GetStudentsWithAddress();
         }
 
-        public async Task<Student> GetStudentWithAddressByIdAsync(int studentId)
+        public async Task<IDataResult<Student>> GetStudentWithAddressByIdAsync(int studentId)
         {
-            return await _studentDal.GetStudentWithAddressByIdAsync(s => s.Id == studentId);
+            var student = await _studentDal.GetStudentWithAddressByIdAsync(s => s.Id == studentId);
+
+            if (student == null)
+                return new ErrorDataResult<Student>(new Student { Id = studentId }, HttpStatusCode.NotFound);
+
+            return new SuccessfulDataResult<Student>(student, HttpStatusCode.OK);
         }
 
         public async Task<IDataResult<Student>> GetStudentByIdAsync(int id)
