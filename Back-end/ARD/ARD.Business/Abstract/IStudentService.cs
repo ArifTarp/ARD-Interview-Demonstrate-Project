@@ -16,7 +16,7 @@ namespace ARD.Business.Abstract
 
         Task<Student> AddStudentAsync(Student student);
 
-        Task DeleteStudentAsync(int id);
+        Task<IResult> DeleteStudentAsync(int id);
 
         Task UpdateStudentAsync(Student student);
 

@@ -70,8 +70,7 @@ namespace ARD.API.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _studentService.DeleteStudentAsync(id);
-            return Ok();
+            return StatusCode((await _studentService.DeleteStudentAsync(id)).HttpStatusCode);
         }
 
         [HttpPost("add")]

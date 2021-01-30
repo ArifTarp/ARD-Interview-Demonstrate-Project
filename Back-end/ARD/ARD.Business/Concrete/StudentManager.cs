@@ -53,9 +53,15 @@ namespace ARD.Business.Concrete
             return await _studentDal.AddAsync(student);
         }
 
-        public async Task DeleteStudentAsync(int id)
+        public async Task<IResult> DeleteStudentAsync(int id)
         {
+            var student = GetStudentByIdAsync(id);
+            if (student == null)
+                return new ErrorResult(HttpStatusCode.NotFound);
+
             await _studentDal.DeleteAsync(new Student { Id = id });
+
+            return new SuccessfulResult(HttpStatusCode.OK);
         }
 
         public async Task UpdateStudentAsync(Student student)
