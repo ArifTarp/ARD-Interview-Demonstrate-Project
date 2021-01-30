@@ -60,11 +60,8 @@ namespace ARD.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var student = await _studentService.GetStudentByIdAsync(id);
-            if (student == null)
-                return BadRequest("Uncorrected id.");
-
-            return Ok(student);
+            var result = await _studentService.GetStudentByIdAsync(id);
+            return StatusCode(result.HttpStatusCode,result.Data);
         }
 
         [HttpDelete("delete/{id}")]

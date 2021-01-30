@@ -12,7 +12,7 @@ namespace ARD.Business.Abstract
     {
         Task<ICollection<Student>> GetAllAsync();
 
-        Task<Student> GetStudentByIdAsync(int id);
+        Task<IDataResult<Student>> GetStudentByIdAsync(int id);
 
         Task<Student> AddStudentAsync(Student student);
 
